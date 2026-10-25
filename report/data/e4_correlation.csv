@@ -1,0 +1,7 @@
+exp_column,n,coverage_rho,navigability_rho,overlap_clearance_rho
+exp_isovist_area_mean,420,0.0739,0.1570,0.0540
+exp_isovist_area_std,420,-0.1623,0.1053,0.0565
+exp_drift_mean,420,0.0639,0.1345,0.0562
+exp_daylight_mean,420,0.1075,0.2487,-0.0287
+exp_path_area_std,420,-0.0371,0.1996,-0.1805
+exp_n_samples,420,-0.0729,0.0943,0.0657

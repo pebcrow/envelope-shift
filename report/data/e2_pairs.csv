@@ -1,0 +1,9 @@
+envelope_id,layout,n_entities,coverage,navigability,nav_success_rate,overlap_clearance,exp_isovist_area_mean,valid,turning_circle_ft,turning_circle_clear
+t5_kitchen_laundry,conventional,12,70.6667,97.6334,1.0000,0.0000,139.0568,True,,
+t5_kitchen_laundry,unconventional,14,52.6667,97.6334,1.0000,0.0000,132.9458,True,,
+t5_sbed_worknook,conventional,6,100.0000,98.6058,1.0000,0.0000,74.8303,True,,
+t5_sbed_worknook,unconventional,7,50.0000,98.6819,1.0000,0.0000,63.7738,True,,
+t5_pbath_aging_in_place,conventional,5,71.4286,98.4716,1.0000,0.0000,85.0518,True,5.0,
+t5_pbath_aging_in_place,unconventional,7,7.1429,100.0000,1.0000,0.0000,99.8855,True,5.0,True
+t5_pbed_nursery,conventional,6,100.0000,97.8365,1.0000,0.0000,124.2962,True,,
+t5_pbed_nursery,unconventional,7,50.0000,100.0000,1.0000,0.0000,144.4614,True,,

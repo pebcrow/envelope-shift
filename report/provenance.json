@@ -1,0 +1,397 @@
+{
+  "report/data/e1_degradation.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.e1_degradation",
+      "{results}/all/scores.jsonl",
+      "{out}"
+    ],
+    "output": "e1_degradation.csv",
+    "inputs": [
+      "results/all/scores.jsonl"
+    ],
+    "byte_identical": true,
+    "note": "Per tier x arm means with bootstrap CIs and the JSON parse-failure rate (R1, R5)."
+  },
+  "report/figures/e1_degradation.png": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.e1_degradation",
+      "{results}/all/scores.jsonl",
+      "{out}"
+    ],
+    "output": "e1_degradation.png",
+    "inputs": [
+      "results/all/scores.jsonl"
+    ],
+    "byte_identical": false,
+    "note": "The three published metrics against the atypicality ladder, one panel each."
+  },
+  "report/data/e1_saturation.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.e1_saturation",
+      "{results}/all/scores.jsonl",
+      "{out}"
+    ],
+    "output": "e1_saturation.csv",
+    "inputs": [
+      "results/all/scores.jsonl"
+    ],
+    "byte_identical": true,
+    "note": "Coverage pooled over every parsed layout, inventory-supplied against inventory-withheld: n, mean, range and the count scoring exactly 100.0. The R1 headline, which e1_degradation.csv carries only per tier."
+  },
+  "report/data/e3_disagreement.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.e3_disagreement",
+      "{results}/all/scores.jsonl",
+      "{out}"
+    ],
+    "output": "e3_disagreement.csv",
+    "inputs": [
+      "results/all/scores.jsonl"
+    ],
+    "byte_identical": true,
+    "note": "Every layout where the three published metrics disagree about the same room (R4)."
+  },
+  "report/figures/e3_disagreement.png": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.e3_disagreement",
+      "{results}/all/scores.jsonl",
+      "{out}"
+    ],
+    "output": "e3_disagreement.png",
+    "inputs": [
+      "results/all/scores.jsonl"
+    ],
+    "byte_identical": false,
+    "note": "Coverage against overlap/clearance, with the disagreeing layouts marked."
+  },
+  "report/data/e4_correlation.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.e4_correlation",
+      "{results}/all/scores.jsonl",
+      "{out}"
+    ],
+    "output": "e4_correlation.csv",
+    "inputs": [
+      "results/all/scores.jsonl"
+    ],
+    "byte_identical": true,
+    "note": "Spearman rho of every experience measure against every published metric (section 8)."
+  },
+  "report/figures/e4_correlation.png": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.e4_correlation",
+      "{results}/all/scores.jsonl",
+      "{out}"
+    ],
+    "output": "e4_correlation.png",
+    "inputs": [
+      "results/all/scores.jsonl"
+    ],
+    "byte_identical": false,
+    "note": "The same correlations as a diverging heatmap."
+  },
+  "report/data/e2b_bestofn.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.e2b_bestofn",
+      "{results}/e2b_default/scores.jsonl",
+      "{out}",
+      "--layouts",
+      "{results}/e2b_default/layouts.jsonl"
+    ],
+    "output": "e2b_bestofn.csv",
+    "inputs": [
+      "results/e2b_default/scores.jsonl",
+      "results/e2b_default/layouts.jsonl"
+    ],
+    "byte_identical": true,
+    "note": "Best-of-16 selection by coverage against pool diversity, per model and T5 room, on provider-default samples (R2). The ALL rows also carry a same-size baseline: 2000 random one-sample-per-room selections (seed 0), with the mean, 5th and 95th percentile of their aggregate type entropy and the fraction of draws at or below the selected set's. They also carry the same selection under random tie-breaking on coverage ties (same seed and draw count): the mean, 5th and 95th percentile of its aggregate type entropy and the share of random selections at or below its mean."
+  },
+  "report/figures/e2b_bestofn.png": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.e2b_bestofn",
+      "{results}/e2b_default/scores.jsonl",
+      "{out}",
+      "--layouts",
+      "{results}/e2b_default/layouts.jsonl"
+    ],
+    "output": "e2b_bestofn.png",
+    "inputs": [
+      "results/e2b_default/scores.jsonl",
+      "results/e2b_default/layouts.jsonl"
+    ],
+    "byte_identical": false,
+    "note": "Selected-sample diversity against pool diversity."
+  },
+  "report/data/e2_pairs.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.experiments.e2_pairs",
+      "{out}"
+    ],
+    "output": "e2_pairs.csv",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "The four hand-authored T5 pairs scored on all four axes, plus the geometric turning-circle check (R3). No results/ input: the layouts are authored in src/envelope_shift/experiments/e2_pairs.py, not generated."
+  },
+  "report/data/e2_coverage_gap.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.experiments.e2_pairs",
+      "{out}"
+    ],
+    "output": "e2_coverage_gap.csv",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "Where each E2 pair's coverage gap comes from: per source (an unsatisfied inventory line, or an off-inventory type and whether the envelope declares it), the points each layout loses and the difference. Rows of a pair sum to its coverage gap. No results/ input."
+  },
+  "report/figures/e2_t5_kitchen_laundry.png": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.experiments.e2_pairs",
+      "{out}"
+    ],
+    "output": "e2_t5_kitchen_laundry.png",
+    "inputs": [],
+    "byte_identical": false,
+    "note": "t5_kitchen_laundry: conventional and unconventional layouts side by side."
+  },
+  "report/figures/e2_t5_pbath_aging_in_place.png": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.experiments.e2_pairs",
+      "{out}"
+    ],
+    "output": "e2_t5_pbath_aging_in_place.png",
+    "inputs": [],
+    "byte_identical": false,
+    "note": "t5_pbath_aging_in_place: conventional and unconventional layouts side by side."
+  },
+  "report/figures/e2_t5_pbed_nursery.png": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.experiments.e2_pairs",
+      "{out}"
+    ],
+    "output": "e2_t5_pbed_nursery.png",
+    "inputs": [],
+    "byte_identical": false,
+    "note": "t5_pbed_nursery: conventional and unconventional layouts side by side."
+  },
+  "report/figures/e2_t5_sbed_worknook.png": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.experiments.e2_pairs",
+      "{out}"
+    ],
+    "output": "e2_t5_sbed_worknook.png",
+    "inputs": [],
+    "byte_identical": false,
+    "note": "t5_sbed_worknook: conventional and unconventional layouts side by side."
+  },
+  "report/data/calibration_t0_default.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.calibration",
+      "{results}/all/layouts.jsonl",
+      "--out-dir",
+      "{out}"
+    ],
+    "output": "calibration_t0_default.csv",
+    "inputs": [
+      "results/all/layouts.jsonl"
+    ],
+    "byte_identical": true,
+    "note": "T0 rooms rescored under the DEFAULT parameter set, one row per arm and room (C1)."
+  },
+  "report/data/calibration_t0_strict.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.calibration",
+      "{results}/all/layouts.jsonl",
+      "--out-dir",
+      "{out}"
+    ],
+    "output": "calibration_t0_strict.csv",
+    "inputs": [
+      "results/all/layouts.jsonl"
+    ],
+    "byte_identical": true,
+    "note": "The same rooms rescored under STRICT (C2)."
+  },
+  "report/data/calibration_t0_delta.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.calibration",
+      "{results}/all/layouts.jsonl",
+      "--out-dir",
+      "{out}"
+    ],
+    "output": "calibration_t0_delta.csv",
+    "inputs": [
+      "results/all/layouts.jsonl"
+    ],
+    "byte_identical": true,
+    "note": "STRICT minus DEFAULT per room; the coverage column is 0.0000 on every inventory-supplied arm, which is the C2 result."
+  },
+  "report/data/calibration_t0_summary.md": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.calibration",
+      "{results}/all/layouts.jsonl",
+      "--out-dir",
+      "{out}"
+    ],
+    "output": "calibration_t0_summary.md",
+    "inputs": [
+      "results/all/layouts.jsonl"
+    ],
+    "byte_identical": true,
+    "note": "Per arm T0 means under both parameter sets against the published LLM baseline band."
+  },
+  "report/data/params_default.md": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.run",
+      "params",
+      "--params",
+      "default",
+      "--out-dir",
+      "{out}"
+    ],
+    "output": "params_default.md",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "Every field of params.Params under the DEFAULT set, with the fields STRICT changes marked (claim c8). No results/ input: the values are source."
+  },
+  "report/data/params_strict.md": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.run",
+      "params",
+      "--params",
+      "strict",
+      "--out-dir",
+      "{out}"
+    ],
+    "output": "params_strict.md",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "Every field of params.Params under the STRICT set, with the fields STRICT changes marked (claim c8). No results/ input: the values are source."
+  },
+  "report/figures/ladder.png": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.ladder_figure",
+      "{out}"
+    ],
+    "output": "ladder.png",
+    "inputs": [],
+    "byte_identical": false,
+    "note": "The tier ladder as one strip: the same primary bedroom across all six tiers, drawn empty. T4 hatches the floor with under 6 ft of headroom, because a gable attic is a plain rectangle in plan and the constraint would otherwise be invisible."
+  },
+  "report/figures/ladder.gif": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.ladder_figure",
+      "{out}"
+    ],
+    "output": "ladder.gif",
+    "inputs": [],
+    "byte_identical": false,
+    "note": "The same six panels as animation frames, 1.4 s each and 2.6 s on T5."
+  },
+  "report/data/model_arms.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.model_arms",
+      "{results}/",
+      "{out}"
+    ],
+    "output": "model_arms.csv",
+    "inputs": [
+      "results/all/layouts.jsonl",
+      "results/all/transport_failures.jsonl",
+      "results/e2b_default/layouts.jsonl"
+    ],
+    "byte_identical": true,
+    "note": "Every distinct provider model id and reasoning configuration the raw records carry in call_config, with the number of raw calls it produced in the corpora the other entries read, whether the record was made at call time or backfilled, the sampling regime the calls ran under, and the model the provider says answered (section 3)."
+  },
+  "report/data/t5_decomposition.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.t5_decomposition",
+      "{results}/all/layouts.jsonl",
+      "{out}"
+    ],
+    "output": "t5_decomposition.csv",
+    "inputs": [
+      "results/all/layouts.jsonl"
+    ],
+    "byte_identical": true,
+    "note": "Per inventory-supplied arm, the T5 coverage gap from 100 as an identity over the unclamped rows: missing lines, the envelope's declared extraneous program, synonyms named in analysis/synonyms.toml, and other. Re-scored from the raw layouts with metrics.coverage.coverage(); rows where the floor clamp engaged are counted in n_clamped and left out of the means."
+  },
+  "report/data/t5_by_envelope.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.t5_decomposition",
+      "{results}/all/layouts.jsonl",
+      "{out}"
+    ],
+    "output": "t5_by_envelope.csv",
+    "inputs": [
+      "results/all/layouts.jsonl"
+    ],
+    "byte_identical": true,
+    "note": "Per T5 envelope x arm: the re-scored coverage, whether the clamp engaged, and each extraneous type with the bucket it fell in (declared, synonym as emitted>named, other)."
+  },
+  "report/data/t5_common_rooms.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.t5_decomposition",
+      "{results}/all/layouts.jsonl",
+      "{out}"
+    ],
+    "output": "t5_common_rooms.csv",
+    "inputs": [
+      "results/all/layouts.jsonl"
+    ],
+    "byte_identical": true,
+    "note": "Per inventory-supplied arm, the t5_decomposition.csv means restricted to the T5 rooms every arm has an unclamped parsed row for, so no arm's mean is carried by a room another lacks; each arm's excluded rooms are named with the reason (clamped or parse_failure)."
+  }
+}

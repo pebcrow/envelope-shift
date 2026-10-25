@@ -1,0 +1,50 @@
+{
+  "id": "t4_kitchen_attic_adu",
+  "room_type": "kitchen",
+  "vertices": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      10.0,
+      0.0
+    ],
+    [
+      10.0,
+      14.0
+    ],
+    [
+      0.0,
+      14.0
+    ]
+  ],
+  "wall_thickness": 0.375,
+  "openings": [
+    {
+      "kind": "door",
+      "wall": 0,
+      "t": 0.15,
+      "width": 2.67,
+      "swing_depth": null
+    },
+    {
+      "kind": "window",
+      "wall": 1,
+      "t": 0.5,
+      "width": 3.0,
+      "swing_depth": null
+    }
+  ],
+  "ceiling": {
+    "height": 8.0,
+    "slope_wall": 1,
+    "slope_ft_per_ft": 0.4,
+    "min_height": 5.0
+  },
+  "atypicality": {
+    "tier": "T4",
+    "brief": "attic ADU kitchen: 8 ft at wall 1 sloping to a 5 ft knee wall at wall 3; upper cabinets and the refrigerator only fit against the high wall",
+    "declared_extraneous": []
+  }
+}

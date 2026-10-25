@@ -1,0 +1,94 @@
+{
+  "id": "t3_sbath_halfround",
+  "room_type": "secondary_bath",
+  "vertices": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      6.0,
+      0.0
+    ],
+    [
+      6.0,
+      8.0
+    ],
+    [
+      5.8978,
+      8.7765
+    ],
+    [
+      5.5981,
+      9.5
+    ],
+    [
+      5.1213,
+      10.1213
+    ],
+    [
+      4.5,
+      10.5981
+    ],
+    [
+      3.7765,
+      10.8978
+    ],
+    [
+      3.0,
+      11.0
+    ],
+    [
+      2.2235,
+      10.8978
+    ],
+    [
+      1.5,
+      10.5981
+    ],
+    [
+      0.8787,
+      10.1213
+    ],
+    [
+      0.4019,
+      9.5
+    ],
+    [
+      0.1022,
+      8.7765
+    ],
+    [
+      0.0,
+      8.0
+    ]
+  ],
+  "wall_thickness": 0.375,
+  "openings": [
+    {
+      "kind": "door",
+      "wall": 0,
+      "t": 0.5,
+      "width": 2.67,
+      "swing_depth": null
+    },
+    {
+      "kind": "window",
+      "wall": 1,
+      "t": 0.7,
+      "width": 2.0,
+      "swing_depth": null
+    }
+  ],
+  "ceiling": {
+    "height": 9.0,
+    "slope_wall": null,
+    "slope_ft_per_ft": 0.0,
+    "min_height": null
+  },
+  "atypicality": {
+    "tier": "T3",
+    "brief": "half-round end wall as a 12-segment polyline",
+    "declared_extraneous": []
+  }
+}

@@ -1,0 +1,3 @@
+arm,n_parsed,coverage_mean,coverage_min,coverage_max,n_exactly_100,pct_exactly_100,n_rows
+inventory_supplied,229,96.3795,0.0000,100.0000,196,86.0000,240
+inventory_withheld,191,37.9983,0.0000,100.0000,3,2.0000,192

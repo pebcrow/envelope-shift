@@ -1,0 +1,57 @@
+{
+  "id": "t4_sbed_bonus_over_garage",
+  "room_type": "secondary_bedroom",
+  "vertices": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      20.0,
+      0.0
+    ],
+    [
+      20.0,
+      12.0
+    ],
+    [
+      0.0,
+      12.0
+    ]
+  ],
+  "wall_thickness": 0.375,
+  "openings": [
+    {
+      "kind": "door",
+      "wall": 3,
+      "t": 0.5,
+      "width": 2.67,
+      "swing_depth": null
+    },
+    {
+      "kind": "window",
+      "wall": 0,
+      "t": 0.3,
+      "width": 3.0,
+      "swing_depth": null
+    },
+    {
+      "kind": "window",
+      "wall": 0,
+      "t": 0.7,
+      "width": 3.0,
+      "swing_depth": null
+    }
+  ],
+  "ceiling": {
+    "height": 8.0,
+    "slope_wall": 3,
+    "slope_ft_per_ft": 0.25,
+    "min_height": 4.0
+  },
+  "atypicality": {
+    "tier": "T4",
+    "brief": "bonus room over the garage used as a bedroom: 8 ft at wall 3, 3:12 across 20 ft to a 4 ft knee wall at wall 1",
+    "declared_extraneous": []
+  }
+}

@@ -1,0 +1,101 @@
+# Named model specs for `envelope-shift sweep --models <name>`.
+# Each table is one ModelSpec (src/envelope_shift/generate.py). Keys:
+#   backend      "openai" (any OpenAI-compatible server) | "anthropic" (API key) |
+#                "claude_cli" (Claude Code subscription; how the Claude arms run)
+#   model        provider model id
+#   base_url     OpenAI-compatible endpoint (omit for the provider default)
+#   api_key_env  env var holding the key; also looked up by name in the optional key
+#                file named by ENVELOPE_SHIFT_KEYFILE (LOCAL_KEY aliases to LLM_LOCAL_KEY)
+#   temperature  sampling temperature. OpenAI-compatible backends only — current Claude
+#                models reject sampling params with a 400 and the anthropic transport
+#                does not send it, so an anthropic entry must not carry one;
+#                `sweep --temperature` overrides
+#   sampling     "default" = the provider's own sampling: no temperature sent, the row
+#                records sampling {}. Excludes `temperature`; `sweep --sampling default`
+#                does the same for every arm of one sweep.
+#   thinking     anthropic only: the thinking block type ("adaptive"). Omitted from the
+#                request when unset.
+#   effort       anthropic / claude_cli: output_config.effort / --effort ("low".."max").
+#                Omitted when unset; claude_cli refuses to run without one.
+#   max_tokens   output budget; reasoning models spend most of it thinking
+#
+# EVERY ARM'S REASONING SETTING IS DECLARED HERE AND RECORDED ON EVERY RAW ROW (claim v6).
+# This file says what a sweep would send today; it cannot say what an existing row did
+# send. The artifact's original defect was exactly that gap — DeepSeek ran with thinking
+# disabled and GLM at reasoning_effort=low, both stated here, while the report called them
+# frontier. See src/envelope_shift/generate.py ModelSpec.call_config.
+#
+# Names not found here fall back to the backend:model[@base_url] grammar.
+
+[local]
+backend = "openai"
+model = "qwen3-30b-a3b"
+base_url = "http://localhost:8000/v1"
+api_key_env = "LOCAL_KEY"
+temperature = 0.2
+max_tokens = 16000
+
+# THE TWO CLAUDE ARMS. The author's decisions of 2026-09-21, which supersede the
+# API-key arms these entries used to be:
+#   1. Claude is reached through the Claude Code SUBSCRIPTION (backend claude_cli), never a
+#      token-billed API key: no api_key_env, no anthropic SDK call on the sweep path.
+#   2. Extended (adaptive) thinking at effort MEDIUM, stated for every arm rather than
+#      inherited from the provider default. The CLI runs adaptive thinking itself and has no
+#      switch for it, so only `effort` is declared here (it is sent as --effort). Thinking-
+#      DISABLED stays rejected: Opus 5 with thinking off is documented to leak thinking tags
+#      into the visible response, which would inflate the published parse-failure rate for
+#      reasons about tag leakage rather than room difficulty.
+#   3. No `temperature`: the CLI has no sampling flag and current Claude models reject one.
+#      `sampling = "default"` says so outright; the row records sampling {}. E2b is N samples
+#      at the provider's default sampling for every arm it runs on.
+# The launcher prefix is host configuration, not a repo fact: set ENVELOPE_SHIFT_CLAUDE_CMD
+# (shlex-split, default `claude`) in the environment. It should be an
+# isolated environment. MEASURED 2026-09-21: through one, with tools off, a call reads 413 input tokens,
+# ~400 of it fixed CLI preamble; outside one the same call read ~16.5K because the local
+# harness leaks in. `--bare` refuses OAuth, so it cannot stand in. max_tokens does not apply:
+# the CLI takes no output budget.
+[opus]
+backend = "claude_cli"
+model = "claude-opus-5"
+effort = "medium"
+sampling = "default"
+
+[sonnet]
+backend = "claude_cli"
+model = "claude-sonnet-5"
+effort = "medium"
+sampling = "default"
+
+# DeepSeek V4 Flash reached THROUGH the local server's proxy to the cloud provider
+# (served there as `deepseek-v4-flash-proxy`). One door for model access: the server
+# holds the cloud key; the caller presents the same local key as for local models.
+# Thinking is DISABLED: with it on, V4 Flash spent
+# a full 16,000-token budget reasoning about wall normals for one office and returned
+# empty content (finish_reason=length, 2026-09-08); with it off the same room parsed
+# in 1.5 s. `thinking: {type: disabled}` is the field DeepSeek's API documents for
+# turning thinking off, and the request shape the author's own client tooling had
+# verified it honours.
+[deepseek]
+backend = "openai"
+model = "deepseek-v4-flash-proxy"
+base_url = "http://localhost:8000/v1"
+api_key_env = "LOCAL_KEY"
+temperature = 0.2
+max_tokens = 8000
+[deepseek.extra_body]
+thinking = { type = "disabled" }
+
+# z.ai GLM-5.3 reached THROUGH the same local proxy (measured 2026-09-08).
+# z.ai ALWAYS reasons: a thinking-disable payload is refused
+# (error 1210), and reasoning_effort is the only lever — measured medians of reasoning
+# tokens on one prompt: low 28, high 80, unset 166. So `low` is set here; the trace
+# comes back in `reasoning_content`, and `content` carries the answer.
+[glm]
+backend = "openai"
+model = "glm-5-3-proxy"
+base_url = "http://localhost:8000/v1"
+api_key_env = "LOCAL_KEY"
+temperature = 0.2
+max_tokens = 8000
+[glm.extra_body]
+reasoning_effort = "low"

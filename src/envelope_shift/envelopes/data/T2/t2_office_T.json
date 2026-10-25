@@ -1,0 +1,66 @@
+{
+  "id": "t2_office_T",
+  "room_type": "office",
+  "vertices": [
+    [
+      4.0,
+      0.0
+    ],
+    [
+      10.0,
+      0.0
+    ],
+    [
+      10.0,
+      6.0
+    ],
+    [
+      14.0,
+      6.0
+    ],
+    [
+      14.0,
+      14.0
+    ],
+    [
+      0.0,
+      14.0
+    ],
+    [
+      0.0,
+      6.0
+    ],
+    [
+      4.0,
+      6.0
+    ]
+  ],
+  "wall_thickness": 0.375,
+  "openings": [
+    {
+      "kind": "door",
+      "wall": 0,
+      "t": 0.5,
+      "width": 2.67,
+      "swing_depth": null
+    },
+    {
+      "kind": "window",
+      "wall": 4,
+      "t": 0.5,
+      "width": 4.0,
+      "swing_depth": null
+    }
+  ],
+  "ceiling": {
+    "height": 9.0,
+    "slope_wall": null,
+    "slope_ft_per_ft": 0.0,
+    "min_height": null
+  },
+  "atypicality": {
+    "tier": "T2",
+    "brief": "T-shaped office entered through a 6 ft stem",
+    "declared_extraneous": []
+  }
+}

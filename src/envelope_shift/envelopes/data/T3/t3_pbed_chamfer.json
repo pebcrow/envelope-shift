@@ -1,0 +1,54 @@
+{
+  "id": "t3_pbed_chamfer",
+  "room_type": "primary_bedroom",
+  "vertices": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      14.0,
+      0.0
+    ],
+    [
+      14.0,
+      12.0
+    ],
+    [
+      10.0,
+      16.0
+    ],
+    [
+      0.0,
+      16.0
+    ]
+  ],
+  "wall_thickness": 0.375,
+  "openings": [
+    {
+      "kind": "door",
+      "wall": 0,
+      "t": 0.15,
+      "width": 2.67,
+      "swing_depth": null
+    },
+    {
+      "kind": "window",
+      "wall": 3,
+      "t": 0.5,
+      "width": 3.0,
+      "swing_depth": null
+    }
+  ],
+  "ceiling": {
+    "height": 9.0,
+    "slope_wall": null,
+    "slope_ft_per_ft": 0.0,
+    "min_height": null
+  },
+  "atypicality": {
+    "tier": "T3",
+    "brief": "45-degree chamfered corner",
+    "declared_extraneous": []
+  }
+}

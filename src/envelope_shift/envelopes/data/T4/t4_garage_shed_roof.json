@@ -1,0 +1,50 @@
+{
+  "id": "t4_garage_shed_roof",
+  "room_type": "garage",
+  "vertices": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      22.0,
+      0.0
+    ],
+    [
+      22.0,
+      24.0
+    ],
+    [
+      0.0,
+      24.0
+    ]
+  ],
+  "wall_thickness": 0.375,
+  "openings": [
+    {
+      "kind": "door",
+      "wall": 0,
+      "t": 0.5,
+      "width": 16.0,
+      "swing_depth": null
+    },
+    {
+      "kind": "door",
+      "wall": 2,
+      "t": 0.1,
+      "width": 2.67,
+      "swing_depth": null
+    }
+  ],
+  "ceiling": {
+    "height": 10.0,
+    "slope_wall": 3,
+    "slope_ft_per_ft": 0.2,
+    "min_height": 7.0
+  },
+  "atypicality": {
+    "tier": "T4",
+    "brief": "shed-roof garage: 10 ft at wall 3 dropping to a 7 ft beam line along wall 1; tall storage and the water heater flue only clear on the high side",
+    "declared_extraneous": []
+  }
+}

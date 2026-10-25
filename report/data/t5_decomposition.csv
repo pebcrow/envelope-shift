@@ -1,0 +1,6 @@
+model,n_rows,n_clamped,coverage_mean,missing,extraneous_declared,extraneous_synonym,extraneous_other
+deepseek,8,0,84.6726,0.0000,12.2024,0.0000,3.1250
+glm,7,1,84.7959,0.0000,8.2313,3.4014,3.5714
+local,7,0,97.6190,0.0000,0.0000,0.0000,2.3810
+opus,7,1,77.2449,0.0000,10.6122,9.0476,3.0952
+sonnet,7,0,84.7959,0.0000,10.6122,4.5918,0.0000

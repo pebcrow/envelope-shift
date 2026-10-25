@@ -1,0 +1,27 @@
+[project]
+name = "envelope-shift"
+version = "1.0.0"
+description = "Out-of-distribution benchmark for BIM room-layout generation metrics"
+authors = [
+    { name = "Pebcrow Inc." }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic>=1.4.0",
+    "matplotlib>=3.11.1",
+    "numpy>=2.5.3",
+    "openai>=3.8.0",
+    "pydantic>=2.13.5",
+    "pytest>=9.1.1",
+    "shapely>=2.1.2",
+]
+
+[project.scripts]
+envelope-shift = "envelope_shift.run:main"
+
+[build-system]
+requires = ["uv_build>=0.12.8,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,50 @@
+{
+  "id": "t4_sbed_attic",
+  "room_type": "secondary_bedroom",
+  "vertices": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      12.0,
+      0.0
+    ],
+    [
+      12.0,
+      14.0
+    ],
+    [
+      0.0,
+      14.0
+    ]
+  ],
+  "wall_thickness": 0.375,
+  "openings": [
+    {
+      "kind": "door",
+      "wall": 0,
+      "t": 0.2,
+      "width": 2.67,
+      "swing_depth": null
+    },
+    {
+      "kind": "window",
+      "wall": 1,
+      "t": 0.5,
+      "width": 3.0,
+      "swing_depth": null
+    }
+  ],
+  "ceiling": {
+    "height": 8.0,
+    "slope_wall": 2,
+    "slope_ft_per_ft": 0.5,
+    "min_height": 4.0
+  },
+  "atypicality": {
+    "tier": "T4",
+    "brief": "attic bedroom: 8 ft at wall 2, sloping 6:12 to a 4 ft knee wall at wall 0",
+    "declared_extraneous": []
+  }
+}

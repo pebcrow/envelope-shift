@@ -1,0 +1,6 @@
+model,n_rooms,coverage_mean,missing,extraneous_declared,extraneous_synonym,extraneous_other,excluded
+deepseek,7,93.1973,0.0000,6.8027,0.0000,0.0000,
+glm,7,84.7959,0.0000,8.2313,3.4014,3.5714,t5_garage_workshop:clamped
+local,7,97.6190,0.0000,0.0000,0.0000,2.3810,t5_garage_workshop:parse_failure
+opus,7,77.2449,0.0000,10.6122,9.0476,3.0952,t5_garage_workshop:clamped
+sonnet,7,84.7959,0.0000,10.6122,4.5918,0.0000,t5_garage_workshop:parse_failure

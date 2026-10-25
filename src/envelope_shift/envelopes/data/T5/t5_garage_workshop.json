@@ -1,0 +1,54 @@
+{
+  "id": "t5_garage_workshop",
+  "room_type": "garage",
+  "vertices": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      24.0,
+      0.0
+    ],
+    [
+      24.0,
+      26.0
+    ],
+    [
+      0.0,
+      26.0
+    ]
+  ],
+  "wall_thickness": 0.375,
+  "openings": [
+    {
+      "kind": "door",
+      "wall": 0,
+      "t": 0.5,
+      "width": 16.0,
+      "swing_depth": null
+    },
+    {
+      "kind": "door",
+      "wall": 2,
+      "t": 0.1,
+      "width": 2.67,
+      "swing_depth": null
+    }
+  ],
+  "ceiling": {
+    "height": 9.0,
+    "slope_wall": null,
+    "slope_ft_per_ft": 0.0,
+    "min_height": null
+  },
+  "atypicality": {
+    "tier": "T5",
+    "brief": "garage with a dedicated workshop bay: a workbench, stationary tools and dust collection",
+    "declared_extraneous": [
+      "table_saw",
+      "dust_collector",
+      "tool_chest"
+    ]
+  }
+}

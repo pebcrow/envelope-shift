@@ -1,0 +1,61 @@
+{
+  "id": "t5_sbed_worknook",
+  "room_type": "secondary_bedroom",
+  "vertices": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      12.0,
+      0.0
+    ],
+    [
+      12.0,
+      15.0
+    ],
+    [
+      0.0,
+      15.0
+    ]
+  ],
+  "wall_thickness": 0.375,
+  "openings": [
+    {
+      "kind": "door",
+      "wall": 0,
+      "t": 0.2,
+      "width": 2.67,
+      "swing_depth": null
+    },
+    {
+      "kind": "window",
+      "wall": 2,
+      "t": 0.3,
+      "width": 3.0,
+      "swing_depth": null
+    },
+    {
+      "kind": "window",
+      "wall": 2,
+      "t": 0.7,
+      "width": 3.0,
+      "swing_depth": null
+    }
+  ],
+  "ceiling": {
+    "height": 9.0,
+    "slope_wall": null,
+    "slope_ft_per_ft": 0.0,
+    "min_height": null
+  },
+  "atypicality": {
+    "tier": "T5",
+    "brief": "bedroom with a built-in work alcove: the work zone is built-in casework rather than a loose desk",
+    "declared_extraneous": [
+      "built_in_desk",
+      "built_in_shelving",
+      "window_seat"
+    ]
+  }
+}

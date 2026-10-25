@@ -1,0 +1,39 @@
+# Emitted entity type -> the declared-extraneous or inventory type it names.
+#
+# The T5 coverage decomposition (report/data/t5_decomposition.csv) puts a type the scorer
+# calls extraneous into one of three buckets: the envelope's own declared_extraneous program,
+# a SYNONYM listed here, or other. A row here is an argument the report has to defend, so:
+#
+#   * a mapping is a vocabulary variant of the SAME thing, never a related thing;
+#   * it must not map a type to itself, and its target must be a declared_extraneous or
+#     inventory type of the room where the emitted type appears (t5_decomposition.py refuses
+#     the run otherwise, as does the frozen v10 oracle);
+#   * the evidence is a raw row, cited on the line above the mapping.
+#
+# Spirit: phase 1 scored E2 under the most favourable defensible normalisation
+# (roll_in_shower -> shower_stall, glider -> chair). Nothing here goes further than that.
+#
+# Considered and NOT mapped, because the name does not settle it: laundry_closet in
+# t5_sbath_laundry_closet (glm; an enclosure, though its 2.5 x 2.5 x 6.5 ft box is the size of
+# opus's washer_dryer_stack), bed in t5_office_murphy (local; a fixed bed, not a wall bed),
+# tool_cabinet -> tool_chest, wall_shelf -> storage_shelf, pegboard, and every type that names a
+# different object (band_saw, drill_press, upper_cabinet, ...).
+
+[synonyms]
+# t5_office_murphy, opus: a 5.3 x 1.5 x 7.5 ft unit on a wall. "Wall bed" is the US trade name for a Murphy bed.
+wall_bed = "murphy_bed"
+# t5_pbath_sauna, glm and sonnet: a 4-5 x 4 x 7-7.5 ft box, the size of opus's own `sauna` (4.5 x 4.0 x 7.0); "cabin" is appended.
+sauna_cabin = "sauna"
+# t5_sbath_laundry_closet, opus and sonnet: one 2.5 x 2.5 x 6.0-6.5 ft unit. A stacked washer/dryer
+# is a washer and a dryer; mapped to washer, so it absolves one declared type, not two.
+washer_dryer_stack = "washer"
+# t5_pbed_nursery, opus: a 2.5 x 2.5 x 3.5 ft seat beside the crib and changing table; the nursery's declared type is the glider.
+glider_chair = "glider"
+# t5_sbed_worknook, opus and sonnet: on the same wall and t as the built_in_desk, offset 2.0 ft along it. Inventory type: chair.
+desk_chair = "chair"
+# t5_kitchen_laundry, opus: 4.0 x 3.0 x 3.0 ft, centred, 6.0 ft off the wall. The kitchen inventory's own type is island.
+kitchen_island = "island"
+# t5_garage_workshop, opus: two 1.5 ft deep, 7.0 ft tall runs (8.0 and 10.0 ft) on walls 3 and 1. The garage inventory's own type is storage_shelf.
+storage_shelving = "storage_shelf"
+# t5_sbed_worknook, glm: 5.0 x 2.0 x 2.5 ft, identical to opus's built_in_desk in the same room; "casework" names the trade.
+built_in_desk_casework = "built_in_desk"

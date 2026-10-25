@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+results/
+*.egg-info/
+.pytest_cache/
+.claude/
+
+# Local process artifacts. The tooling that built this repo writes these into a
+# working tree; they carry host-specific configuration and internal ids that mean
+# nothing to a reader, so they stay on disk and out of git.
+OUTCOME.json
+RESULT.md
+.pipelined.toml
+docs/plans/

@@ -1,0 +1,8 @@
+# Prose-versus-data review (pebcrow-guild H2/H6). OPERATOR-ONLY: a lane whose diff changes
+# this file is refused at land. Every externally read prose file is a report, including the
+# top-level README's "In short" findings. The tables are the committed derived tables that
+# every number must trace to (results/ is gitignored). No reviewer_command: the guild's
+# default reviewer runs, with the operator-registered claude.
+[worktracker.prose_review]
+reports = ["README.md", "report/*.md"]
+tables  = ["report/data/*.csv", "report/data/*.md"]

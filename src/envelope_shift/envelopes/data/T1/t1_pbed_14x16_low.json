@@ -1,0 +1,50 @@
+{
+  "id": "t1_pbed_14x16_low",
+  "room_type": "primary_bedroom",
+  "vertices": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      14.0,
+      0.0
+    ],
+    [
+      14.0,
+      16.0
+    ],
+    [
+      0.0,
+      16.0
+    ]
+  ],
+  "wall_thickness": 0.375,
+  "openings": [
+    {
+      "kind": "door",
+      "wall": 0,
+      "t": 0.15,
+      "width": 2.67,
+      "swing_depth": null
+    },
+    {
+      "kind": "window",
+      "wall": 2,
+      "t": 0.5,
+      "width": 3.0,
+      "swing_depth": null
+    }
+  ],
+  "ceiling": {
+    "height": 7.0,
+    "slope_wall": null,
+    "slope_ft_per_ft": 0.0,
+    "min_height": null
+  },
+  "atypicality": {
+    "tier": "T1",
+    "brief": "typical plan, 7 ft ceiling",
+    "declared_extraneous": []
+  }
+}

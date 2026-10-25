@@ -1,0 +1,61 @@
+envelope_id,room_type,tier,model,sample,coverage,navigability,overlap_clearance,reason
+t0_kitchen_12x14,kitchen,T0,deepseek,0,100.0000,98.7211,18.6209,cov>=90 & oc>=10
+t0_kitchen_14x16,kitchen,T0,deepseek,0,100.0000,98.5473,29.5423,cov>=90 & oc>=10
+t0_pbath_10x12,primary_bath,T0,deepseek,0,100.0000,98.7627,16.3397,cov>=90 & oc>=10
+t0_sbath_5x9,secondary_bath,T0,deepseek,0,100.0000,97.2860,17.4395,cov>=90 & oc>=10
+t0_pbed_14x16,primary_bedroom,T0,deepseek,0,100.0000,97.7565,18.9827,cov>=90 & oc>=10
+t1_pbed_9x22,primary_bedroom,T1,deepseek,0,100.0000,98.6058,18.7879,cov>=90 & oc>=10
+t1_kitchen_7x16_adu,kitchen,T1,deepseek,0,100.0000,98.9139,13.5958,cov>=90 & oc>=10
+t1_office_7x8,office,T1,deepseek,0,100.0000,100.0000,18.0060,cov>=90 & oc>=10
+t1_pbed_14x16_low,primary_bedroom,T1,deepseek,0,100.0000,97.7134,18.9727,cov>=90 & oc>=10
+t1_sbath_4x11,secondary_bath,T1,deepseek,0,100.0000,99.0460,21.4753,cov>=90 & oc>=10
+t1_kitchen_12x14_tall,kitchen,T1,deepseek,0,100.0000,98.5201,21.5745,cov>=90 & oc>=10
+t2_pbed_L,primary_bedroom,T2,deepseek,0,100.0000,94.9936,25.2089,cov>=90 & oc>=10
+t2_kitchen_column,kitchen,T2,deepseek,0,100.0000,97.7266,20.4097,cov>=90 & oc>=10
+t2_garage_notch,garage,T2,deepseek,0,100.0000,98.7824,21.7397,cov>=90 & oc>=10
+t2_sbed_chimney,secondary_bedroom,T2,deepseek,0,100.0000,94.7489,16.7292,cov>=90 & oc>=10
+t3_pbed_chamfer,primary_bedroom,T3,deepseek,0,100.0000,99.4956,19.2708,cov>=90 & oc>=10
+t3_pbath_bowed,primary_bath,T3,deepseek,0,100.0000,74.3643,13.1453,cov>=90 & oc>=10
+t3_kitchen_30deg,kitchen,T3,deepseek,0,100.0000,98.1323,19.2815,cov>=90 & oc>=10
+t3_pbed_octagon,primary_bedroom,T3,deepseek,0,100.0000,99.3065,19.0430,cov>=90 & oc>=10
+t4_pbed_attic_gable,primary_bedroom,T4,deepseek,0,100.0000,98.7058,19.0011,cov>=90 & oc>=10
+t4_pbath_dormer,primary_bath,T4,deepseek,0,100.0000,99.1404,10.3532,cov>=90 & oc>=10
+t4_kitchen_attic_adu,kitchen,T4,deepseek,0,95.0000,97.9640,25.5329,cov>=90 & oc>=10
+t5_kitchen_laundry,kitchen,T5,deepseek,0,100.0000,96.1225,15.2753,cov>=90 & oc>=10
+t5_sbath_laundry_closet,secondary_bath,T5,deepseek,0,100.0000,97.5855,11.1161,cov>=90 & oc>=10
+t0_kitchen_12x14,kitchen,T0,glm,0,100.0000,98.3062,13.1741,cov>=90 & oc>=10
+t0_kitchen_14x16,kitchen,T0,glm,0,100.0000,97.6458,22.5737,cov>=90 & oc>=10
+t0_sbath_5x9,secondary_bath,T0,glm,0,100.0000,0.0000,12.4476,cov>=90 & nav<50 & oc>=10
+t0_pbed_14x16,primary_bedroom,T0,glm,0,100.0000,99.4956,12.5536,cov>=90 & oc>=10
+t1_kitchen_7x16_adu,kitchen,T1,glm,0,98.0000,99.1322,22.0936,cov>=90 & oc>=10
+t1_pbath_6x18,primary_bath,T1,glm,0,100.0000,74.0705,11.6686,cov>=90 & oc>=10
+t2_pbed_L,primary_bedroom,T2,glm,0,100.0000,99.1508,26.3160,cov>=90 & oc>=10
+t2_garage_notch,garage,T2,glm,0,100.0000,32.2154,38.9077,cov>=90 & nav<50 & oc>=10
+t2_sbath_chase,secondary_bath,T2,glm,0,100.0000,98.1411,10.4278,cov>=90 & oc>=10
+t3_pbed_chamfer,primary_bedroom,T3,glm,0,100.0000,100.0000,19.0104,cov>=90 & oc>=10
+t3_office_trapezoid,office,T3,glm,0,100.0000,98.0928,17.2348,cov>=90 & oc>=10
+t3_kitchen_30deg,kitchen,T3,glm,0,98.3333,98.1955,14.0884,cov>=90 & oc>=10
+t4_pbed_attic_gable,primary_bedroom,T4,glm,0,100.0000,98.8182,18.9542,cov>=90 & oc>=10
+t4_sbath_under_roof,secondary_bath,T4,glm,0,100.0000,0.0000,18.3564,cov>=90 & nav<50 & oc>=10
+t4_pbath_dormer,primary_bath,T4,glm,0,100.0000,0.0000,27.9422,cov>=90 & nav<50 & oc>=10
+t4_garage_shed_roof,garage,T4,glm,0,100.0000,49.0079,41.5045,cov>=90 & nav<50 & oc>=10
+t4_kitchen_attic_adu,kitchen,T4,glm,0,100.0000,91.8590,13.3643,cov>=90 & oc>=10
+t5_pbath_sauna,primary_bath,T5,glm,0,92.8571,99.4221,16.4738,cov>=90 & oc>=10
+t0_kitchen_14x16,kitchen,T0,local,0,90.0000,98.1234,12.7104,cov>=90 & oc>=10
+t0_sbath_5x9,secondary_bath,T0,local,0,100.0000,63.6730,22.8056,cov>=90 & oc>=10
+t0_sbed_12x12,secondary_bedroom,T0,local,0,100.0000,99.4956,22.1863,cov>=90 & oc>=10
+t1_kitchen_7x16_adu,kitchen,T1,local,0,96.0000,97.7990,23.7782,cov>=90 & oc>=10
+t1_sbath_4x11,secondary_bath,T1,local,0,100.0000,33.3333,8.7595,cov>=90 & nav<50
+t1_pbath_6x18,primary_bath,T1,local,0,100.0000,100.0000,21.7130,cov>=90 & oc>=10
+t2_kitchen_column,kitchen,T2,local,0,100.0000,97.4740,15.2758,cov>=90 & oc>=10
+t2_pbath_U,primary_bath,T2,local,0,100.0000,97.2043,21.6195,cov>=90 & oc>=10
+t3_pbath_bowed,primary_bath,T3,local,0,100.0000,98.3228,22.4184,cov>=90 & oc>=10
+t3_kitchen_30deg,kitchen,T3,local,0,100.0000,98.7928,10.4244,cov>=90 & oc>=10
+t3_garage_taper,garage,T3,local,0,100.0000,66.0962,22.9539,cov>=90 & oc>=10
+t4_sbath_under_roof,secondary_bath,T4,local,0,100.0000,0.0000,11.2444,cov>=90 & nav<50 & oc>=10
+t4_pbath_dormer,primary_bath,T4,local,0,100.0000,98.8249,17.4375,cov>=90 & oc>=10
+t4_kitchen_attic_adu,kitchen,T4,local,0,100.0000,0.0000,19.3247,cov>=90 & nav<50 & oc>=10
+t5_kitchen_laundry,kitchen,T5,local,0,100.0000,0.0000,19.6448,cov>=90 & nav<50 & oc>=10
+t5_pbath_sauna,primary_bath,T5,local,0,100.0000,0.0000,8.7788,cov>=90 & nav<50
+t3_garage_taper,garage,T3,opus,0,100.0000,97.8467,16.1993,cov>=90 & oc>=10
+t2_garage_notch,garage,T2,sonnet,0,100.0000,32.8899,18.6193,cov>=90 & nav<50 & oc>=10

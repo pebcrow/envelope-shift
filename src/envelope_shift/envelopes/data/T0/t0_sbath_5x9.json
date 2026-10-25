@@ -1,0 +1,43 @@
+{
+  "id": "t0_sbath_5x9",
+  "room_type": "secondary_bath",
+  "vertices": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      5.0,
+      0.0
+    ],
+    [
+      5.0,
+      9.0
+    ],
+    [
+      0.0,
+      9.0
+    ]
+  ],
+  "wall_thickness": 0.375,
+  "openings": [
+    {
+      "kind": "door",
+      "wall": 0,
+      "t": 0.5,
+      "width": 2.67,
+      "swing_depth": null
+    }
+  ],
+  "ceiling": {
+    "height": 9.0,
+    "slope_wall": null,
+    "slope_ft_per_ft": 0.0,
+    "min_height": null
+  },
+  "atypicality": {
+    "tier": "T0",
+    "brief": "typical 5x9 hall bath",
+    "declared_extraneous": []
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "id": "t4_pbed_attic_gable",
+  "room_type": "primary_bedroom",
+  "vertices": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      14.0,
+      0.0
+    ],
+    [
+      14.0,
+      16.0
+    ],
+    [
+      0.0,
+      16.0
+    ]
+  ],
+  "wall_thickness": 0.375,
+  "openings": [
+    {
+      "kind": "door",
+      "wall": 0,
+      "t": 0.15,
+      "width": 2.67,
+      "swing_depth": null
+    },
+    {
+      "kind": "window",
+      "wall": 1,
+      "t": 0.5,
+      "width": 3.0,
+      "swing_depth": null
+    },
+    {
+      "kind": "window",
+      "wall": 3,
+      "t": 0.5,
+      "width": 3.0,
+      "swing_depth": null
+    }
+  ],
+  "ceiling": {
+    "height": 9.0,
+    "slope_wall": 2,
+    "slope_ft_per_ft": 0.5,
+    "min_height": 5.0
+  },
+  "atypicality": {
+    "tier": "T4",
+    "brief": "gable attic primary: 9 ft at the ridge wall 2, 6:12 down to a 5 ft knee wall at wall 0; windows only on the gable ends",
+    "declared_extraneous": []
+  }
+}

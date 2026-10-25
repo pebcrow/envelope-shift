@@ -1,0 +1,7 @@
+# The manifest that reproduces the results/all this repo analysed before the Claude arms were
+# pooled: the top-level local sweep ("." is results/ itself), then cloud, cloud_noinv, glm and
+# glm_noinv, all generated WITHOUT the atypicality brief. tests/test_pool.py pools this and
+# requires the bytes of the hand-built results/all back. Not the manifest the report uses:
+# analysis/corpora.toml is.
+[pools.all]
+sweeps = [".", "cloud", "cloud_noinv", "glm", "glm_noinv"]

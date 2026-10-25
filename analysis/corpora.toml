@@ -1,0 +1,25 @@
+# Which sweep directories form each pooled corpus the report analyses.
+#
+# `envelope-shift pool` rebuilds results/<pool>/{layouts,transport_failures,scores}.jsonl
+# from this file and nothing else: the raw files of the named sweeps, concatenated in the
+# order listed, then scored. results/all used to be built by hand, off-repo, so "open the
+# raw row" held only because nobody re-pooled.
+#
+# Paths are relative to results/. "." names results/ itself (the top-level sweep that
+# predates the per-arm directories).
+#
+# A directory that is not listed is not analysed. Old sweeps stay on disk, untouched, as the
+# record of what they were; being absent here is what removes them from every table.
+
+[pools.all]
+# The stimulus-parity corpora. deepseek_e1, glm_e1 and local_e1 are the 2026-09-21 re-runs
+# with the atypicality brief transmitted and prompt_sha256 recorded; the pre-brief sweeps
+# (cloud, cloud_noinv, glm, glm_noinv and the top-level local sweep) generated every row
+# without it and are out of the analysed set (claim v9).
+sweeps = [
+  "deepseek_e1",
+  "glm_e1",
+  "local_e1",
+  "claude_opus_e1",
+  "claude_sonnet_e1",
+]

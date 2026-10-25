@@ -1,0 +1,6 @@
+model,reasoning,source,backend,sampling,observed_model,n_rows
+claude-opus-5,"{""effort"": ""medium""}",recorded,claude_cli,{},claude-opus-5,160
+claude-sonnet-5,"{""effort"": ""medium""}",recorded,claude_cli,{},claude-sonnet-5,160
+deepseek-v4-flash-proxy,"{""thinking"": {""type"": ""disabled""}}",recorded,openai,"{""temperature"": 0.2} x96 | {} x64",deepseek-flash,160
+glm-5-3-proxy,"{""reasoning_effort"": ""low""}",recorded,openai,"{""temperature"": 0.2}",glm-5.3,96
+qwen3-30b-a3b,{},recorded,openai,"{""temperature"": 0.2}",/models/Qwen3-30B-A3B/Qwen3-30B-A3B.Q4_K_M.gguf,48

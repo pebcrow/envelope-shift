@@ -1,0 +1,80 @@
+{
+  "id": "t3_sbed_bay45",
+  "room_type": "secondary_bedroom",
+  "vertices": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      12.0,
+      0.0
+    ],
+    [
+      12.0,
+      13.0
+    ],
+    [
+      10.0,
+      13.0
+    ],
+    [
+      8.0,
+      15.0
+    ],
+    [
+      4.0,
+      15.0
+    ],
+    [
+      2.0,
+      13.0
+    ],
+    [
+      0.0,
+      13.0
+    ]
+  ],
+  "wall_thickness": 0.375,
+  "openings": [
+    {
+      "kind": "door",
+      "wall": 0,
+      "t": 0.2,
+      "width": 2.67,
+      "swing_depth": null
+    },
+    {
+      "kind": "window",
+      "wall": 4,
+      "t": 0.5,
+      "width": 3.0,
+      "swing_depth": null
+    },
+    {
+      "kind": "window",
+      "wall": 3,
+      "t": 0.5,
+      "width": 2.0,
+      "swing_depth": null
+    },
+    {
+      "kind": "window",
+      "wall": 5,
+      "t": 0.5,
+      "width": 2.0,
+      "swing_depth": null
+    }
+  ],
+  "ceiling": {
+    "height": 9.0,
+    "slope_wall": null,
+    "slope_ft_per_ft": 0.0,
+    "min_height": null
+  },
+  "atypicality": {
+    "tier": "T3",
+    "brief": "bedroom with a 45-degree bay window projecting 2 ft",
+    "declared_extraneous": []
+  }
+}

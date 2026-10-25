@@ -1,0 +1,50 @@
+{
+  "id": "t4_office_dormer",
+  "room_type": "office",
+  "vertices": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      10.0,
+      0.0
+    ],
+    [
+      10.0,
+      10.0
+    ],
+    [
+      0.0,
+      10.0
+    ]
+  ],
+  "wall_thickness": 0.375,
+  "openings": [
+    {
+      "kind": "door",
+      "wall": 3,
+      "t": 0.5,
+      "width": 2.67,
+      "swing_depth": null
+    },
+    {
+      "kind": "window",
+      "wall": 1,
+      "t": 0.5,
+      "width": 2.5,
+      "swing_depth": null
+    }
+  ],
+  "ceiling": {
+    "height": 8.0,
+    "slope_wall": 3,
+    "slope_ft_per_ft": 0.3,
+    "min_height": 5.0
+  },
+  "atypicality": {
+    "tier": "T4",
+    "brief": "dormer office: 8 ft at wall 3, sloping to 5 ft at wall 1",
+    "declared_extraneous": []
+  }
+}

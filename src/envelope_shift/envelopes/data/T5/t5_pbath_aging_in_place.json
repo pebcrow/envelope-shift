@@ -1,0 +1,54 @@
+{
+  "id": "t5_pbath_aging_in_place",
+  "room_type": "primary_bath",
+  "vertices": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      11.0,
+      0.0
+    ],
+    [
+      11.0,
+      13.0
+    ],
+    [
+      0.0,
+      13.0
+    ]
+  ],
+  "wall_thickness": 0.375,
+  "openings": [
+    {
+      "kind": "door",
+      "wall": 0,
+      "t": 0.2,
+      "width": 3.0,
+      "swing_depth": null
+    },
+    {
+      "kind": "window",
+      "wall": 2,
+      "t": 0.5,
+      "width": 2.5,
+      "swing_depth": null
+    }
+  ],
+  "ceiling": {
+    "height": 9.0,
+    "slope_wall": null,
+    "slope_ft_per_ft": 0.0,
+    "min_height": null
+  },
+  "atypicality": {
+    "tier": "T5",
+    "brief": "aging-in-place bath: curbless roll-in shower, 5 ft turning radius, grab bars, bench",
+    "declared_extraneous": [
+      "roll_in_shower",
+      "grab_bar",
+      "shower_bench"
+    ]
+  }
+}
