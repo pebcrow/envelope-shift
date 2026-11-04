@@ -1,0 +1,18 @@
+# Which committed raw sweep directories (under replication/raw/) form each replication pool.
+# Same grammar as analysis/corpora.toml; read by envelope_shift.analysis.replication.
+
+[pools.all]
+# One reply per envelope, all 48 envelopes, with and without the expected inventory.
+sweeps = [
+  "opus55_e1",
+  "opus55_noinv_e1",
+  "sonnet55_e1",
+  "sonnet55_noinv_e1",
+]
+
+[pools.e2b_default]
+# 16 samples per E2 room at the provider's default sampling, inventory supplied.
+sweeps = [
+  "opus55_e2b",
+  "sonnet55_e2b",
+]
