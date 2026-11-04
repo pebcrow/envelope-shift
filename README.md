@@ -2,19 +2,46 @@
 
 [![test](https://github.com/pebcrow/envelope-shift/actions/workflows/test.yml/badge.svg)](https://github.com/pebcrow/envelope-shift/actions/workflows/test.yml)
 
-**A stress test for the room-layout metrics Higharc published for its Generative
-Building Model, and one finding that matters if those metrics are ever used as a
-reward: coverage penalises a layout for furnishing what the brief asked for.**
+## What this is, in plain terms
+
+**An independent research study with working code, not a production tool.** It
+tests the method Higharc published for grading AI-generated room layouts
+([Production-grade AI layout: Generative Building Model](https://www.higharc.com/blog/ai-layout-at-higharc-tokenizing-buildings),
+April 2026). Nothing here plugs into Higharc's system. The test rooms are
+hand-made, the expected-furniture lists are this project's own, and the layouts
+come from general-purpose AI models, not Higharc's. Think of it as a short paper
+whose every number can be re-run, not as software anyone would operate.
+
+## What it found, in plain terms
+
+1. **The grading method has a blind spot.** One of the three published grades,
+   *coverage*, checks whether a room contains what a room of that type usually
+   contains. When a customer asks for something unusual (grab bars and a roll-in
+   shower in an accessible bathroom, a crib in the main bedroom, a washer and
+   dryer in the kitchen), coverage marks the room *down* for including it.
+2. **It matters most for where AI layout is heading.** Used only as a quality
+   check, the blind spot is minor. Used to *train* or *select* AI output, it
+   teaches the AI to ignore unusual requests and drift back to the standard room.
+3. **The grade is the problem, not the AI.** Re-run on the newest Claude models
+   (Opus 5.5 and Sonnet 5.5), the result is the same: they lose the same points
+   for following the requests as the older models did. A better model does not
+   make the problem go away.
+4. **There is a cheap fix.** Grade each room against what the customer asked
+   for, not only against what that type of room usually contains. Rooms with
+   ordinary requests score exactly as before. On the unusual ones, following the
+   request stops losing, and in three of four test rooms it wins (the fourth
+   ties). Merely forgiving the requested items is not enough, which is a useful
+   result in itself.
+
+The rest of this page, and [the report](report/README.md), is the evidence.
+
+## The evidence, briefly
 
 envelope-shift reimplements the three published metrics (coverage, navigability,
-and overlap & clearance) from Higharc's engineering post
-([Production-grade AI layout: Generative Building Model](https://www.higharc.com/blog/ai-layout-at-higharc-tokenizing-buildings),
-April 2026). It then scores AI-generated layouts on a ladder of 48 rooms in six
-tiers, from ordinary rectangles up to ordinary geometry with an unconventional
-program: a kitchen that is also the laundry, a bath for aging in place, a
-nursery, a bedroom with a work nook.
-
-**In one minute:**
+and overlap & clearance) and scores AI-generated layouts on a ladder of 48 rooms
+in six tiers, from ordinary rectangles up to ordinary geometry with an
+unconventional program: a kitchen that is also the laundry, a bath for aging in
+place, a nursery, a bedroom with a work nook.
 
 - On ordinary rooms every model scores near the ceiling on coverage. On the
   unconventional-program tier, coverage falls. **None of the fall is a missing
