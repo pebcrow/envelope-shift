@@ -26,13 +26,25 @@ for p in default strict; do
 done
 ```
 
+## Regenerating the replication
+
+The 5.5 replication ([report section 10](../report/10-replication.md)) commits its
+raw model output under `replication/raw/`, so every table it cites regenerates
+offline. This scores every committed row under the current metrics and compares
+each table in `report/data/replication/` byte for byte; it takes a few minutes:
+
+```bash
+uv run python -m envelope_shift.analysis.replication   # prints "replication tables reproduce"
+uv run pytest -q -m replication                        # the same check, as a test (CI runs it)
+```
+
 ## What skips, and why
 
 About nine tests skip on a fresh clone. Each prints its reason with
 `uv run pytest -q -rs`:
 
 - the tests that re-derive committed tables from `results/`, which holds the
-  raw model outputs of the original sweeps. That directory is gitignored and not
+  raw model outputs of the original (pre-replication) sweeps. That directory is gitignored and not
   distributed. Point `ENVELOPE_SHIFT_RESULTS` at a copy to run them.
 - one test that checks a recorded CLI row against a validity oracle script that
   is not distributed (`ENVELOPE_SHIFT_VALIDITY_PY`).

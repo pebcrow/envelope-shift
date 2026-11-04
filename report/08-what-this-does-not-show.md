@@ -106,9 +106,11 @@ arms' split on this axis at T0 (section 4) has not been separated from that
 effect. The definitions of the four terms, their equal weights and the touching
 tolerance are this harness's own choices as well (section 3).
 
-**Nothing was re-run after the last fixes.** The sweeps were last scored before
-a fixture standing on a doorway was made to count as blocking that pair, and by
-choice nothing was re-run or rescored for this release. Coverage and overlap &
+**The original sweeps were not rescored after the last fix.** They were last
+scored before a fixture standing on a doorway was made to count as blocking that
+pair, and their raw output is not distributed. The section 10 replication was run
+and scored after the fix, so its navigability is current; it does not rescore the
+original arms. Coverage and overlap &
 clearance do not depend on that fix; every navigability figure taken from the
 sweeps does, and is stale until the sweeps are rescored. The
 [status of results](README.md#status-of-results) lists what held, what was

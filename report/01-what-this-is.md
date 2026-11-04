@@ -31,7 +31,9 @@ the aging-in-place bath asked for, and on synonyms. On the rooms every arm
 completed, the arms rank roughly inversely to how much of the program they
 furnished, with a tie. Hand-authored layouts show the same mechanism in two of
 four rooms, and selecting samples by coverage picks less diverse layouts than
-chance for two of three arms. Section 5 carries all three.
+chance for two of three arms. Section 5 carries all three, and section 10
+replicates the result on Claude Opus 5.5 and Sonnet 5.5, with the raw model
+output committed.
 
 What is in here: the three published metrics, reimplemented from the post
 alone; a tiered set of envelopes and briefs that walks away from the typical

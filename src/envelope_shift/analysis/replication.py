@@ -2,6 +2,7 @@
 
     uv run python -m envelope_shift.analysis.replication            # check: regenerate, compare
     uv run python -m envelope_shift.analysis.replication --write    # refresh report/data/replication/
+    uv run python -m envelope_shift.analysis.replication --build OUT  # write everything into OUT
     uv run python -m envelope_shift.analysis.replication ingest SWEEP_ROOT   # one-off, see below
 
 Unlike the original sweeps, whose raw output under results/ is host-bound and not distributed,
@@ -146,6 +147,7 @@ def write(out: Path = OUT, figures: Path = FIGURES) -> None:
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     p.add_argument("--write", action="store_true", help="refresh the committed tables and figures")
+    p.add_argument("--build", metavar="OUT", help="write every table and figure into OUT (provenance.json uses this)")
     sub = p.add_subparsers(dest="cmd")
     i = sub.add_parser("ingest", help="sanitize sweep output into replication/raw/")
     i.add_argument("sweep_root")
@@ -153,6 +155,9 @@ def main(argv: list[str] | None = None) -> int:
     if args.cmd == "ingest":
         for path in ingest(Path(args.sweep_root)):
             print(f"wrote {path.relative_to(REPO)}")
+        return 0
+    if args.build:
+        build(Path(args.build))
         return 0
     if args.write:
         write()

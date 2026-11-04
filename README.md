@@ -1,51 +1,62 @@
 # envelope-shift
 
-**Affiliation disclaimer.** This is an independent reimplementation, from a
-public engineering post, of the three evaluation metrics Higharc published for
-their Generative Building Model
+[![test](https://github.com/pebcrow/envelope-shift/actions/workflows/test.yml/badge.svg)](https://github.com/pebcrow/envelope-shift/actions/workflows/test.yml)
+
+**A stress test for the room-layout metrics Higharc published for its Generative
+Building Model, and one finding that matters if those metrics are ever used as a
+reward: coverage penalises a layout for furnishing what the brief asked for.**
+
+envelope-shift reimplements the three published metrics (coverage, navigability,
+and overlap & clearance) from Higharc's engineering post
 ([Production-grade AI layout: Generative Building Model](https://www.higharc.com/blog/ai-layout-at-higharc-tokenizing-buildings),
-April 2026). The author has **no affiliation** with Higharc, no access to their
-model, their corpus or their inventory tables, and makes no claim whatever about
-what their model would score on anything in this repo. GBM was never run here
-and could not be. The original post is unusually detailed and generous, and it
-is the reason this project is possible at all.
+April 2026). It then scores AI-generated layouts on a ladder of 48 rooms in six
+tiers, from ordinary rectangles up to ordinary geometry with an unconventional
+program: a kitchen that is also the laundry, a bath for aging in place, a
+nursery, a bedroom with a work nook.
 
-## What it is
+**In one minute:**
 
-envelope-shift is a stress test for the room-layout scoring metrics used in home
-design software. It gives AI models unusual room briefs (a kitchen that is also
-the laundry, a bathroom for aging in place, a nursery, a bedroom with a work
-nook) and scores the layouts they return with the three published metrics:
-coverage, navigability, and overlap & clearance. The test set is a ladder of six
-tiers of eight rooms each, from ordinary rectangles up to ordinary geometry with
-an unconventional program. Its one surviving finding is that **coverage, used as
-a reward, penalises a model for furnishing what the brief asked for.**
+- On ordinary rooms every model scores near the ceiling on coverage. On the
+  unconventional-program tier, coverage falls. **None of the fall is a missing
+  item; all of it is the penalty on what the brief asked for:** the washer and
+  dryer, the crib, the grab bars ([section 5](report/05-coverage-as-reward.md)).
+- A hand-authored, fully valid aging-in-place bath scores **7.1** on coverage
+  against **71.4** for the conventional one. Coverage docks it for the tub it
+  removed and again for the roll-in shower and grab bars it added.
+- Picking the best of 16 samples by coverage keeps *less varied* layouts than
+  picking at random, for four of the five arms tested across both runs.
+- **Replicated on current models.** The study began on a local open-weights
+  model and cheaper cloud arms, then was re-run end to end on **Claude Opus 5.5
+  and Sonnet 5.5** with nothing else changed. The finding holds to within two
+  points: 0.0 coverage lost to missing items, the same 10.6 lost to the declared
+  program ([section 10](report/10-replication.md)).
+- **Verifiable from a fresh clone.** The replication's raw model output is
+  committed, and every one of its tables regenerates byte for byte in CI.
 
 [![the aging-in-place pair](report/figures/e2_t5_pbath_aging_in_place.png)](report/figures/e2_t5_pbath_aging_in_place.png)
 
-The sharpest case is a hand-authored, fully valid primary bath designed for
-aging in place: coverage scores the conventional layout **71.4** and the
-unconventional one **7.1**. It docks the unconventional layout once for the
-bathtub, shower stall and linen cabinet it gives up, and again for the roll-in
-shower, shower bench and grab bars it puts there instead, which coverage scores
-as *extraneous* ([section 5](report/05-coverage-as-reward.md),
-[`e2_pairs.csv`](report/data/e2_pairs.csv)).
+**Affiliation.** This is an independent project with **no affiliation** with
+Higharc. It has no access to GBM, their corpus or their inventory tables, and it
+makes no claim about what their model would score on anything here. The post is
+unusually detailed and generous, and it is the reason this project is possible.
 
 ## Status of results
 
-Read this before quoting anything. The report says plainly what held, what was
-shown wrong and what is out of date; the full list is in
+The report labels each result as held, withdrawn or stale; the full list is in
 [report/README.md, "Status of results"](report/README.md#status-of-results).
 
 - **Held:** the coverage-as-reward finding ([section 5](report/05-coverage-as-reward.md)).
   Every committed table regenerates from the raw data, and an adversarial review
   reproduced the numbers.
-- **Invalidated:** three headline results of the first draft: "coverage
+- **Replicated and current:** the same finding on Opus 5.5 and Sonnet 5.5
+  ([section 10](report/10-replication.md)), scored under the current metrics,
+  with raw data in the repo.
+- **Withdrawn:** three headline results of the first draft: "coverage
   saturates", "parse failures rise with difficulty" and "navigability
   reimplements the published formula". Each was traced to a defect in the
   experiment, not in the arithmetic, and withdrawn.
-- **Stale:** navigability figures from the model sweeps predate the last
-  navigability fix and have not been re-run.
+- **Stale:** navigability figures from the *original* sweeps predate the last
+  navigability fix. The replication's navigability is current.
 
 ## Quickstart
 
@@ -58,6 +69,7 @@ uv run pytest -q                                   # the test suite
 uv run envelope-shift params                       # the chosen-parameters table
 uv run envelope-shift params --params strict --out-dir /tmp/params
 uv run envelope-shift score-layout                 # score one committed layout, print its metrics
+uv run python -m envelope_shift.analysis.replication   # rebuild every section 10 table from committed raw data
 ```
 
 About nine tests skip on a fresh clone, and `uv run pytest -q -rs` prints why:
@@ -65,7 +77,8 @@ they re-derive tables from `results/`, the raw model output, which is not
 distributed. [docs/offline.md](docs/offline.md) has the details.
 
 The commands that call a model or read `results/` are below for completeness.
-This release does not re-run them.
+The replication (section 10) was produced by the first of them with
+`--models opus55 sonnet55`.
 
 ```bash
 uv run envelope-shift sweep --models local opus sonnet --out results
@@ -83,7 +96,7 @@ a change without re-querying a model.
 
 ## Read the report
 
-**[`report/`](report/README.md)** is the write-up, in nine short sections:
+**[`report/`](report/README.md)** is the write-up, in ten short sections:
 
 | | |
 |---|---|
@@ -96,6 +109,7 @@ a change without re-querying a model.
 | [7. A fourth axis](report/07-fourth-axis.md) | isovist and daylight measures, explicitly unvalidated |
 | [8. What this does not show](report/08-what-this-does-not-show.md) | the limitations, at full strength |
 | [9. A note from an adjacent domain](report/09-adjacent-domain.md) | the same failure mode, seen elsewhere |
+| [10. Replication on the 5.5 models](report/10-replication.md) | Opus 5.5 and Sonnet 5.5, raw data committed, the finding holds |
 
 Every number in the report is a cell in a committed table under
 [`report/data/`](report/data), named in the sentence that uses it and
@@ -149,8 +163,8 @@ and every unpublished parameter are this harness's own, so absolute scores are
 not comparable with the published ones; the arms are general-purpose models run
 under different transports and sampling, not Higharc's model; overlap &
 clearance depends on how an arm reads the placement convention; the fourth axis
-is unvalidated; and nothing was re-run after the last fixes, so sweep
-navigability is stale. The author has no professional expertise in architecture.
+is unvalidated; and the original sweeps were not rescored after the last fix, so
+their navigability is stale (the replication's is current). The author has no professional expertise in architecture.
 Treat this as a well-evidenced warning about one metric used as a reward, not a
 verdict on anyone's system.
 
@@ -168,6 +182,7 @@ src/envelope_shift/
   experiments/      the hand-authored paired layouts (E2)
   generate.py       prompt a model (OpenAI-compatible, Anthropic, or the Claude Code CLI), parse a layout
   run.py            sweep, score, score-layout, params, summary
+replication/        the 5.5 replication: committed raw model output and its pool manifest
 report/             the write-up, its derived tables, and its figures
 docs/               offline use and the Guild case study
 tests/

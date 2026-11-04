@@ -1,0 +1,11 @@
+model,envelope_id,n,best_sample,best_coverage,pool_mean_coverage,sel_unique,pool_mean_unique,sel_entropy,pool_mean_entropy,pool_agg_unique,pool_agg_entropy,rand_draws,rand_seed,rand_entropy_mean,rand_entropy_p05,rand_entropy_p95,rand_frac_le_sel,tb_entropy_mean,tb_entropy_p05,tb_entropy_p95,tb_frac_rand_le
+opus55,t5_kitchen_laundry,16,1,90.0000,88.7500,10,10.3125,2.8206,2.8329,17,2.9520,,,,,,,,,,
+opus55,t5_pbath_aging_in_place,16,0,92.8571,92.4107,7,7.1250,2.8074,2.8243,10,3.0322,,,,,,,,,,
+opus55,t5_pbed_nursery,16,0,66.6667,52.0833,5,5.9375,2.2516,2.5022,8,2.6133,,,,,,,,,,
+opus55,t5_sbed_worknook,16,10,66.6667,52.0833,5,5.8750,2.3219,2.5521,10,2.8065,,,,,,,,,,
+sonnet55,t5_kitchen_laundry,16,0,90.0000,90.0000,10,10.1875,2.8206,2.8383,14,2.9798,,,,,,,,,,
+sonnet55,t5_pbath_aging_in_place,16,1,100.0000,94.6429,6,6.7500,2.5850,2.7480,10,2.9911,,,,,,,,,,
+sonnet55,t5_pbed_nursery,16,10,66.6667,53.1250,5,5.8125,2.2516,2.4710,8,2.7033,,,,,,,,,,
+sonnet55,t5_sbed_worknook,16,0,83.3333,76.0417,4,4.4375,2.0000,2.1408,6,2.3257,,,,,,,,,,
+opus55,ALL,64,,79.0476,71.3318,25,7.3125,4.2939,2.6778,41,4.5436,2000,0,4.4027,4.2957,4.5313,0.0465,4.2747,4.1705,4.3565,0.0390
+sonnet55,ALL,64,,85.0000,78.4524,22,6.7969,4.1043,2.5496,34,4.3775,2000,0,4.2149,4.1043,4.3276,0.0755,4.1282,4.0651,4.2290,0.0925

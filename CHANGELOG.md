@@ -1,5 +1,25 @@
 # Changelog
 
+## v1.1.0 — replication on the 5.5 models
+
+### Added
+- Report section 10: the whole harness re-run on Claude Opus 5.5 and Sonnet 5.5
+  (`opus55`, `sonnet55` in `models.toml`), same prompts, transport, effort and
+  sampling as the original Claude arms. The T5 finding holds: 0.0 coverage lost
+  to missing lines, 10.6 to the declared program, on both.
+- `replication/raw/`: the replication's raw model output, committed and
+  sanitized (session and message ids, host paths and account state removed;
+  the condition-bearing CLI events kept). `replication/corpora.toml` pools it.
+- `envelope_shift.analysis.replication`: rebuilds every `report/data/replication/`
+  table from the committed rows under the current metrics, and checks them byte
+  for byte. CI runs the check as its own step (`pytest -m replication`).
+- `tests/test_replication.py`: the regenerate check, and a guard that no
+  committed raw row carries a UUID-shaped id, a session id or a host path.
+
+### Changed
+- README leads with the finding and the replication; status labels gain
+  CURRENT for the replication, and STALE now names only the original sweeps.
+
 ## v1.0.0 — release-ready wrap-up
 
 No model was re-run and no result table was regenerated for this release; the
