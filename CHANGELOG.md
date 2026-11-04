@@ -16,6 +16,12 @@
 - `tests/test_replication.py`: the regenerate check, and a guard that no
   committed raw row carries a UUID-shaped id, a session id or a host path.
 
+- Report section 11 and `metrics.coverage.coverage_brief`: brief-aware coverage,
+  a proposed fix in two modes (tolerate, require), a no-op wherever a brief
+  declares no program. `analysis/e5_brief_coverage.py` scores the E2 pairs
+  (`report/data/e5_pairs.csv`) and the replication rows
+  (`report/data/replication/e5_*.csv`); `tests/test_brief_coverage.py` covers it.
+
 ### Changed
 - README leads with the finding and the replication; status labels gain
   CURRENT for the replication, and STALE now names only the original sweeps.

@@ -85,6 +85,9 @@ hand-authored navigability figures in section 5.2 are current.
    mode in browser-game generation, without numbers.
 10. [Replication on the 5.5 models](10-replication.md) — the same harness on
    Claude Opus 5.5 and Sonnet 5.5, raw data committed; the finding holds.
+11. [A proposed fix: brief-aware coverage](11-brief-aware-coverage.md) — score a
+   room against its brief's inventory; forgiving the program is not enough,
+   requiring it flips the incentive.
 
 Plots live in [`figures/`](figures); the tables every section cites live in
 [`data/`](data).
@@ -152,6 +155,7 @@ entry is compared byte for byte.
 | `calibration_t0_delta.csv` | STRICT minus DEFAULT, per room |
 | `calibration_t0_summary.md` | per-arm T0 means under both sets against the published band; `off_scale` counts rows whose navigability left the metric's declared -35..100 |
 | `params_default.md`, `params_strict.md` | every field of `params.Params`, STRICT-changed fields marked |
+| `e5_pairs.csv` | section 11: the E2 pairs under published, tolerate and require coverage, with brief fulfilment |
 | `replication/*` | section 10: the same tables, same names, built from the committed `replication/raw/` rows by `envelope_shift.analysis.replication` |
 
 ## Figures

@@ -103,7 +103,8 @@ def ingest(sweep_root: Path, raw: Path = RAW) -> list[Path]:
 
 def build(out_dir: Path, raw: Path = RAW, manifest: Path = MANIFEST) -> list[Path]:
     """Pool and score the committed raw rows, then run every analysis into out_dir."""
-    from . import calibration, e1_degradation, e2b_bestofn, e3_disagreement, model_arms, t5_decomposition
+    from . import (calibration, e1_degradation, e2b_bestofn, e3_disagreement, e5_brief_coverage, model_arms,
+                   t5_decomposition)
 
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -117,6 +118,8 @@ def build(out_dir: Path, raw: Path = RAW, manifest: Path = MANIFEST) -> list[Pat
         calibration.main([str(al / "layouts.jsonl"), "--out-dir", str(out_dir)])
         e3_disagreement.main([str(al / "scores.jsonl"), str(out_dir)])
         e2b_bestofn.main([str(e2b / "scores.jsonl"), str(out_dir), "--layouts", str(e2b / "layouts.jsonl")])
+        e5_brief_coverage.main(["sweep", str(al / "layouts.jsonl"), str(out_dir)])
+        e5_brief_coverage.main(["bestofn", str(e2b / "layouts.jsonl"), str(out_dir)])
         prov = {"replication": {"inputs": ["results/all/layouts.jsonl", "results/e2b_default/layouts.jsonl"]}}
         model_arms.run(results, out_dir, prov)
     return sorted(out_dir.iterdir())

@@ -575,5 +575,70 @@
     "inputs": [],
     "byte_identical": false,
     "note": "Section 10, the 5.5 replication. No results/ input: built from the committed raw rows under replication/raw/, pooled by replication/corpora.toml and scored under the current metrics."
+  },
+  "report/data/e5_pairs.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.e5_brief_coverage",
+      "pairs",
+      "{out}"
+    ],
+    "output": "e5_pairs.csv",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "Section 11: the four hand-authored E2 pairs under published, tolerate and require coverage, with brief fulfilment. No results/ input: the layouts are authored in code."
+  },
+  "report/data/replication/e5_bestofn.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.replication",
+      "--build",
+      "{out}"
+    ],
+    "output": "e5_bestofn.csv",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "Section 11, brief-aware coverage on the 5.5 replication rows. No results/ input: built from the committed raw rows under replication/raw/."
+  },
+  "report/data/replication/e5_identity.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.replication",
+      "--build",
+      "{out}"
+    ],
+    "output": "e5_identity.csv",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "Section 11, brief-aware coverage on the 5.5 replication rows. No results/ input: built from the committed raw rows under replication/raw/."
+  },
+  "report/data/replication/e5_t5.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.replication",
+      "--build",
+      "{out}"
+    ],
+    "output": "e5_t5.csv",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "Section 11, brief-aware coverage on the 5.5 replication rows. No results/ input: built from the committed raw rows under replication/raw/."
+  },
+  "report/data/replication/e5_t5_correlation.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.replication",
+      "--build",
+      "{out}"
+    ],
+    "output": "e5_t5_correlation.csv",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "Section 11, brief-aware coverage on the 5.5 replication rows. No results/ input: built from the committed raw rows under replication/raw/."
   }
 }

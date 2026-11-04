@@ -1,0 +1,9 @@
+envelope_id,layout,fulfilment,published,tolerate,require
+t5_kitchen_laundry,conventional,0.0000,70.6667,70.6667,58.8889
+t5_kitchen_laundry,unconventional,1.0000,52.6667,62.6667,68.8889
+t5_sbed_worknook,conventional,0.0000,100.0000,100.0000,50.0000
+t5_sbed_worknook,unconventional,1.0000,50.0000,100.0000,100.0000
+t5_pbath_aging_in_place,conventional,0.0000,71.4286,71.4286,50.0000
+t5_pbath_aging_in_place,unconventional,1.0000,7.1429,28.5714,50.0000
+t5_pbed_nursery,conventional,0.0000,100.0000,100.0000,50.0000
+t5_pbed_nursery,unconventional,1.0000,50.0000,100.0000,100.0000

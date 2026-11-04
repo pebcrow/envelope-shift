@@ -120,7 +120,8 @@ Higharc's model; the inventory tables and every unpublished parameter are still
 this harness's own; one reply per room is still one reply per room. A model that
 improved in every way a user would care about scored the same on the metric,
 which is itself the point. The problem section 5 describes is in the reward, and a
-better policy does not make it go away.
+better policy does not make it go away. Section 11 tries a fix to the reward
+instead.
 
 **Transport note.** The command line used here carries a larger fixed preamble
 than the isolated one the original arms ran through; the init event kept on every

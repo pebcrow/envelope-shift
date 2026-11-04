@@ -30,6 +30,12 @@ nursery, a bedroom with a work nook.
   and Sonnet 5.5** with nothing else changed. The finding holds to within two
   points: 0.0 coverage lost to missing items, the same 10.6 lost to the declared
   program ([section 10](report/10-replication.md)).
+- **A proposed fix, measured.** Score the room against its *brief's* inventory
+  instead of its type's. Simply forgiving the requested items is not enough: the
+  layout that ignores the brief still never loses. Requiring them flips the
+  incentive. The brief-following layout wins three of four hand-authored pairs and
+  ties the fourth, and on the models' own output the correlation with following
+  the brief goes from −0.21 to +0.32 ([section 11](report/11-brief-aware-coverage.md)).
 - **Verifiable from a fresh clone.** The replication's raw model output is
   committed, and every one of its tables regenerates byte for byte in CI.
 
@@ -48,6 +54,8 @@ The report labels each result as held, withdrawn or stale; the full list is in
 - **Held:** the coverage-as-reward finding ([section 5](report/05-coverage-as-reward.md)).
   Every committed table regenerates from the raw data, and an adversarial review
   reproduced the numbers.
+- **Proposed fix:** brief-aware coverage ([section 11](report/11-brief-aware-coverage.md)),
+  this project's suggestion rather than part of the published method.
 - **Replicated and current:** the same finding on Opus 5.5 and Sonnet 5.5
   ([section 10](report/10-replication.md)), scored under the current metrics,
   with raw data in the repo.
@@ -96,7 +104,7 @@ a change without re-querying a model.
 
 ## Read the report
 
-**[`report/`](report/README.md)** is the write-up, in ten short sections:
+**[`report/`](report/README.md)** is the write-up, in eleven short sections:
 
 | | |
 |---|---|
@@ -110,6 +118,7 @@ a change without re-querying a model.
 | [8. What this does not show](report/08-what-this-does-not-show.md) | the limitations, at full strength |
 | [9. A note from an adjacent domain](report/09-adjacent-domain.md) | the same failure mode, seen elsewhere |
 | [10. Replication on the 5.5 models](report/10-replication.md) | Opus 5.5 and Sonnet 5.5, raw data committed, the finding holds |
+| [11. A proposed fix](report/11-brief-aware-coverage.md) | brief-aware coverage: what it repairs, measured, and what it does not |
 
 Every number in the report is a cell in a committed table under
 [`report/data/`](report/data), named in the sentence that uses it and
