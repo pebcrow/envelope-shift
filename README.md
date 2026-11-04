@@ -33,6 +33,45 @@ whose every number can be re-run, not as software anyone would operate.
    ties). Merely forgiving the requested items is not enough, which is a useful
    result in itself.
 
+### A worked example: what "marks the room down" means
+
+Coverage gives each room type a checklist. A main bathroom's has 7 lines: toilet;
+vanity; a bathtub or shower stall; a shower; a linen cabinet; a towel bar; a
+medicine cabinet or mirror. The score is:
+
+- **+1 point** for each checklist line the room satisfies;
+- **−½ point** for each *kind* of item that is not on the checklist (Higharc's
+  formula says extras subtract; the size, ½, is this project's choice, because
+  the post does not publish one);
+- divided by the number of lines and multiplied by 100.
+
+The brief asks for an aging-in-place bath: a curbless roll-in shower, room for a
+wheelchair to turn, grab bars and a bench. Here are two hand-drawn layouts of the
+same room, both fully walkable and with nothing overlapping
+([section 5.2](report/05-coverage-as-reward.md)):
+
+| | Standard bathroom | Accessible bathroom (what was asked for) |
+|---|---|---|
+| Contains | toilet, vanity, bathtub, shower stall, linen cabinet | toilet, vanity, roll-in shower, shower bench, grab bars |
+| Checklist lines satisfied | 5 | 2 (toilet, vanity) |
+| Items not on the checklist | none | roll-in shower, shower bench, grab bars: −1.5 |
+| **Coverage** | 5 ÷ 7 = **71.4** | (2 − 1.5) ÷ 7 = **7.1** |
+
+The accessible bathroom is hit twice. It loses checklist points for the tub,
+shower stall and linen cabinet it gave up, because the checklist does not know a
+roll-in shower is a shower. And it loses penalty points for the roll-in shower,
+bench and grab bars: exactly what the customer asked for, scored as clutter.
+"Marks the room down" means that: **the requested items are subtracted from the
+score.** An AI trained to raise this score learns that grab bars cost points.
+
+**The fix, in the same terms:** add the brief's requests to that room's
+checklist, so each one earns +1 instead of costing ½. The checklist now has 10
+lines. The accessible bathroom rises to (5 ÷ 10) = **50.0**, and the standard one
+falls to (5 ÷ 10) = **50.0**, because it now misses three requested items. They
+tie only because the checklist still does not count a roll-in shower as a
+shower. In the other three test rooms (the laundry kitchen, the work nook and the
+nursery), the layout that follows the brief now wins outright ([section 11](report/11-brief-aware-coverage.md)).
+
 The rest of this page, and [the report](report/README.md), is the evidence.
 
 ## The evidence, briefly
