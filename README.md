@@ -102,8 +102,10 @@ place, a nursery, a bedroom with a work nook.
   incentive. The brief-following layout wins three of four hand-authored pairs and
   ties the fourth, and on the models' own output the correlation with following
   the brief goes from −0.21 to +0.32 ([section 11](report/11-brief-aware-coverage.md)).
-- **Verifiable from a fresh clone.** The replication's raw model output is
-  committed, and every one of its tables regenerates byte for byte in CI.
+- **Verifiable from a fresh clone, every number.** The raw model output behind
+  every table, from the original runs and the replication alike, is committed
+  (sanitized), and CI rebuilds every table from it byte for byte on each push.
+  Nothing in the report has to be taken on trust.
 
 [![the aging-in-place pair](report/figures/e2_t5_pbath_aging_in_place.png)](report/figures/e2_t5_pbath_aging_in_place.png)
 
@@ -143,12 +145,14 @@ uv run pytest -q                                   # the test suite
 uv run envelope-shift params                       # the chosen-parameters table
 uv run envelope-shift params --params strict --out-dir /tmp/params
 uv run envelope-shift score-layout                 # score one committed layout, print its metrics
+uv run python -m envelope_shift.analysis.original      # rebuild every section 3-7 table from committed raw data
 uv run python -m envelope_shift.analysis.replication   # rebuild every section 10 table from committed raw data
 ```
 
-About nine tests skip on a fresh clone, and `uv run pytest -q -rs` prints why:
-they re-derive tables from `results/`, the raw model output, which is not
-distributed. [docs/offline.md](docs/offline.md) has the details.
+A few tests skip on a fresh clone, and `uv run pytest -q -rs` prints why: they
+check the pooling of the *unsanitized* `results/` tree on the host that produced
+it. The tables themselves are checked from the committed rows.
+[docs/offline.md](docs/offline.md) has the details.
 
 The commands that call a model or read `results/` are below for completeness.
 The replication (section 10) was produced by the first of them with
@@ -238,8 +242,7 @@ and every unpublished parameter are this harness's own, so absolute scores are
 not comparable with the published ones; the arms are general-purpose models run
 under different transports and sampling, not Higharc's model; overlap &
 clearance depends on how an arm reads the placement convention; the fourth axis
-is unvalidated; and the original sweeps' raw output is not distributed, so only
-the replication can be rescored by a reader. The author has no professional expertise in architecture.
+is unvalidated. The author has no professional expertise in architecture.
 Treat this as a well-evidenced warning about one metric used as a reward, not a
 verdict on anyone's system.
 
@@ -257,6 +260,7 @@ src/envelope_shift/
   experiments/      the hand-authored paired layouts (E2)
   generate.py       prompt a model (OpenAI-compatible, Anthropic, or the Claude Code CLI), parse a layout
   run.py            sweep, score, score-layout, params, summary
+original/raw/       the original sweeps' raw model output, sanitized, that sections 3-7 are built from
 replication/        the 5.5 replication: committed raw model output and its pool manifest
 report/             the write-up, its derived tables, and its figures
 docs/               offline use and the Guild case study

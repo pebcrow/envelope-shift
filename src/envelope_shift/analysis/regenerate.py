@@ -90,9 +90,12 @@ def stale_scores(results: Path) -> list[Path]:
     return stale
 
 
-def regenerate(repo: Path, results: Path, write: bool = False) -> list[str]:
-    """Re-run every entry. Returns the relative paths that did NOT reproduce."""
+def regenerate(repo: Path, results: Path, write: bool = False, only=None) -> list[str]:
+    """Re-run every entry (or those `only(rel, entry)` keeps). Returns the relative paths that
+    did NOT reproduce."""
     prov = load_provenance(repo)
+    if only is not None:
+        prov = {rel: entry for rel, entry in prov.items() if only(rel, entry)}
     bad: list[str] = []
     with tempfile.TemporaryDirectory() as tmp:
         scratch = Path(tmp)

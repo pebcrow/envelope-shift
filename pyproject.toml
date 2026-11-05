@@ -1,6 +1,6 @@
 [project]
 name = "envelope-shift"
-version = "1.1.0"
+version = "1.2.0"
 description = "Out-of-distribution benchmark for BIM room-layout generation metrics"
 authors = [
     { name = "Pebcrow Inc." }
@@ -27,5 +27,8 @@ build-backend = "uv_build"
 testpaths = ["tests"]
 # The replication regenerate check scores every committed raw row (a few minutes); CI runs it
 # as its own step, and `uv run pytest -m replication` runs it locally.
-addopts = "-m 'not replication'"
-markers = ["replication: regenerates report/data/replication/ from the committed raw rows (slow)"]
+addopts = "-m 'not replication and not original'"
+markers = [
+    "replication: regenerates report/data/replication/ from the committed raw rows (slow)",
+    "original: regenerates every results/ table from the committed original/raw/ rows (slow)",
+]

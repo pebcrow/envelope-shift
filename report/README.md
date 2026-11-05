@@ -63,8 +63,10 @@ November 2026 the sweeps had not been rescored after it, so sections 4, 5.1, 6
 and 7 carried a STALE label. They have now been rescored on the host that holds
 the raw output, the regenerate check found no stale score anywhere under
 `results/`, and every committed table reproduced byte for byte: the fix moved no
-published number. The label is withdrawn. That check needs the undistributed
-`results/` tree, so a reader cannot repeat it; section 10's can be.
+published number. The label is withdrawn. Since v1.2.0 that check needs no host:
+the sanitized raw rows are committed under [`../original/raw/`](../original/raw),
+and `uv run python -m envelope_shift.analysis.original` rebuilds every table that
+reads `results/` from them alone, as CI does on every push.
 
 ## Contents
 

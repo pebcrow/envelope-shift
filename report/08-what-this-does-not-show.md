@@ -106,10 +106,13 @@ arms' split on this axis at T0 (section 4) has not been separated from that
 effect. The definitions of the four terms, their equal weights and the touching
 tolerance are this harness's own choices as well (section 3).
 
-**The original sweeps' raw output is not distributed.** It was rescored under the
-current metrics on the host that holds it, after the last fix, and every
-committed table reproduced byte for byte; but a reader cannot repeat that check.
-The section 10 replication's raw output is committed and can be. The
+**The raw output is published sanitized, not verbatim.** The original sweeps'
+rows under `original/raw/` and the replication's under `replication/raw/` keep
+every field the scorer and the analyses read, and drop the session and message
+ids, host paths and account state the Claude Code CLI wrote beside them. A
+reader can rebuild every table from them, but cannot re-check those dropped
+fields; the condition each row records (`call_config`, the CLI's model, tool
+lists and usage) is kept. The
 [status of results](README.md#status-of-results) lists what held and what was
 withdrawn.
 

@@ -113,8 +113,8 @@ section 6 pattern: a complete inventory in a room that is barely walkable.
 ## 10.4 What this does and does not add
 
 It adds a second, independent draw on the section 5 finding from two newer
-models, and a corpus anyone can rescore: the original sweeps' raw output is not
-distributed, the replication's is. It does not change any section 8 limitation:
+models, and a corpus anyone can rescore (since v1.2.0 the original sweeps' raw
+output is committed too). It does not change any section 8 limitation:
 the arms are still general-purpose models prompted through a command line, not
 Higharc's model; the inventory tables and every unpublished parameter are still
 this harness's own; one reply per room is still one reply per room. A model that

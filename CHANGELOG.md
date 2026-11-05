@@ -1,5 +1,21 @@
 # Changelog
 
+## v1.2.0 — every number checkable from a fresh clone
+
+### Added
+- `original/raw/`: the raw output of the sweeps behind sections 3 to 7 (the
+  `all` pool of `analysis/corpora.toml` and `e2b_default`), sanitized the same
+  way as the replication's and refused by the sanitizer if any leak pattern
+  remains.
+- `envelope_shift.analysis.original`: `sanitize` copies those sweeps out of a
+  host `results/` tree; the default action rebuilds every `report/provenance.json`
+  table that reads `results/` from the committed rows alone and compares it byte
+  for byte. CI runs it as its own step (`pytest -m original`).
+
+### Changed
+- README, report status, section 8 and the offline guide no longer say the
+  original raw output is undistributed.
+
 ## v1.1.0 — replication on the 5.5 models
 
 ### Added

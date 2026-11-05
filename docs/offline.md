@@ -38,14 +38,26 @@ uv run python -m envelope_shift.analysis.replication   # prints "replication tab
 uv run pytest -q -m replication                        # the same check, as a test (CI runs it)
 ```
 
+## Regenerating the original sweeps' tables
+
+The rows behind sections 3 to 7 are committed, sanitized, under `original/raw/`.
+This pools and scores them under the current metrics and checks every table that
+reads `results/` byte for byte; it takes a few minutes:
+
+```bash
+uv run python -m envelope_shift.analysis.original   # prints "every results/ table reproduces ..."
+uv run pytest -q -m original                        # the same check, as a test (CI runs it)
+```
+
 ## What skips, and why
 
 About nine tests skip on a fresh clone. Each prints its reason with
 `uv run pytest -q -rs`:
 
-- the tests that re-derive committed tables from `results/`, which holds the
-  raw model outputs of the original (pre-replication) sweeps. That directory is gitignored and not
-  distributed. Point `ENVELOPE_SHIFT_RESULTS` at a copy to run them.
+- the tests that check how the host's *unsanitized* `results/` tree pools. That
+  directory is gitignored; the sanitized rows every table is built from are
+  committed under `original/raw/` and checked by
+  `uv run pytest -q -m original`.
 - one test that checks a recorded CLI row against a validity oracle script that
   is not distributed (`ENVELOPE_SHIFT_VALIDITY_PY`).
 - one permissions test that cannot run as root.
