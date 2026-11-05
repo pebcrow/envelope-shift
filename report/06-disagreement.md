@@ -1,9 +1,8 @@
 # 6. Where the three metrics disagree
 
-> **Status.** Coverage and overlap & clearance figures here are HELD.
-> Navigability figures, and so the `nav<50` flags and the flagged count, are
-> STALE: they predate the doorway fix and have not been rescored
-> ([status of results](README.md#status-of-results)).
+> **Status: HELD.** Navigability figures, and so the `nav<50` flags and the
+> flagged count, were confirmed after the doorway fix: rescoring the sweeps
+> changed none of them ([status of results](README.md#status-of-results)).
 
 If the three axes were measuring one underlying quantity they would rise and
 fall together and a single number would do. They do not, and where they come

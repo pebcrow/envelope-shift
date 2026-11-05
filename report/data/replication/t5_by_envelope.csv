@@ -1,0 +1,16 @@
+envelope_id,model,coverage,clamped,missing,extraneous_declared,extraneous_synonym,extraneous_other
+t5_garage_workshop,sonnet55,0.0000,0,,dust_collector;table_saw,,band_saw;drill_press
+t5_kitchen_laundry,opus55,90.0000,0,,dryer;washer,,
+t5_kitchen_laundry,sonnet55,90.0000,0,,dryer;washer,,
+t5_office_murphy,opus55,83.3333,0,,,wall_bed>murphy_bed,
+t5_office_murphy,sonnet55,100.0000,0,,,,
+t5_pbath_aging_in_place,opus55,92.8571,0,,grab_bar,,
+t5_pbath_aging_in_place,sonnet55,92.8571,0,,shower_bench,,
+t5_pbath_sauna,opus55,92.8571,0,,sauna,,
+t5_pbath_sauna,sonnet55,92.8571,0,,sauna,,
+t5_pbed_nursery,opus55,50.0000,0,,changing_table;crib,glider_chair>glider,
+t5_pbed_nursery,sonnet55,50.0000,0,,changing_table;crib,glider_chair>glider,
+t5_sbath_laundry_closet,opus55,91.6667,0,,,,stacked_washer_dryer
+t5_sbath_laundry_closet,sonnet55,91.6667,0,,,,stacked_washer_dryer
+t5_sbed_worknook,opus55,50.0000,0,,built_in_desk,desk_chair>chair,wall_shelf
+t5_sbed_worknook,sonnet55,66.6667,0,,built_in_desk,,upper_cabinet

@@ -1,51 +1,136 @@
 # envelope-shift
 
-**Affiliation disclaimer.** This is an independent reimplementation, from a
-public engineering post, of the three evaluation metrics Higharc published for
-their Generative Building Model
+[![test](https://github.com/pebcrow/envelope-shift/actions/workflows/test.yml/badge.svg)](https://github.com/pebcrow/envelope-shift/actions/workflows/test.yml)
+
+## What this is, in plain terms
+
+**An independent research study with working code, not a production tool.** It
+tests the method Higharc published for grading AI-generated room layouts
 ([Production-grade AI layout: Generative Building Model](https://www.higharc.com/blog/ai-layout-at-higharc-tokenizing-buildings),
-April 2026). The author has **no affiliation** with Higharc, no access to their
-model, their corpus or their inventory tables, and makes no claim whatever about
-what their model would score on anything in this repo. GBM was never run here
-and could not be. The original post is unusually detailed and generous, and it
-is the reason this project is possible at all.
+April 2026). Nothing here plugs into Higharc's system. The test rooms are
+hand-made, the expected-furniture lists are this project's own, and the layouts
+come from general-purpose AI models, not Higharc's. Think of it as a short paper
+whose every number can be re-run, not as software anyone would operate.
 
-## What it is
+## What it found, in plain terms
 
-envelope-shift is a stress test for the room-layout scoring metrics used in home
-design software. It gives AI models unusual room briefs (a kitchen that is also
-the laundry, a bathroom for aging in place, a nursery, a bedroom with a work
-nook) and scores the layouts they return with the three published metrics:
-coverage, navigability, and overlap & clearance. The test set is a ladder of six
-tiers of eight rooms each, from ordinary rectangles up to ordinary geometry with
-an unconventional program. Its one surviving finding is that **coverage, used as
-a reward, penalises a model for furnishing what the brief asked for.**
+1. **The grading method has a blind spot.** One of the three published grades,
+   *coverage*, checks whether a room contains what a room of that type usually
+   contains. When a customer asks for something unusual (grab bars and a roll-in
+   shower in an accessible bathroom, a crib in the main bedroom, a washer and
+   dryer in the kitchen), coverage marks the room *down* for including it.
+2. **It matters most for where AI layout is heading.** Used only as a quality
+   check, the blind spot is minor. Used to *train* or *select* AI output, it
+   teaches the AI to ignore unusual requests and drift back to the standard room.
+3. **The grade is the problem, not the AI.** Re-run on the newest Claude models
+   (Opus 5.5 and Sonnet 5.5), the result is the same: they lose the same points
+   for following the requests as the older models did. A better model does not
+   make the problem go away.
+4. **There is a cheap fix.** Grade each room against what the customer asked
+   for, not only against what that type of room usually contains. Rooms with
+   ordinary requests score exactly as before. On the unusual ones, following the
+   request stops losing, and in three of four test rooms it wins (the fourth
+   ties). Merely forgiving the requested items is not enough, which is a useful
+   result in itself.
+
+### A worked example: what "marks the room down" means
+
+Coverage gives each room type a checklist. A main bathroom's has 7 lines: toilet;
+vanity; a bathtub or shower stall; a shower; a linen cabinet; a towel bar; a
+medicine cabinet or mirror. The score is:
+
+- **+1 point** for each checklist line the room satisfies;
+- **−½ point** for each *kind* of item that is not on the checklist (Higharc's
+  formula says extras subtract; the size, ½, is this project's choice, because
+  the post does not publish one);
+- divided by the number of lines and multiplied by 100.
+
+The brief asks for an aging-in-place bath: a curbless roll-in shower, room for a
+wheelchair to turn, grab bars and a bench. Here are two hand-drawn layouts of the
+same room, both fully walkable and with nothing overlapping
+([section 5.2](report/05-coverage-as-reward.md)):
+
+| | Standard bathroom | Accessible bathroom (what was asked for) |
+|---|---|---|
+| Contains | toilet, vanity, bathtub, shower stall, linen cabinet | toilet, vanity, roll-in shower, shower bench, grab bars |
+| Checklist lines satisfied | 5 | 2 (toilet, vanity) |
+| Items not on the checklist | none | roll-in shower, shower bench, grab bars: −1.5 |
+| **Coverage** | 5 ÷ 7 = **71.4** | (2 − 1.5) ÷ 7 = **7.1** |
+
+The accessible bathroom is hit twice. It loses checklist points for the tub,
+shower stall and linen cabinet it gave up, because the checklist does not know a
+roll-in shower is a shower. And it loses penalty points for the roll-in shower,
+bench and grab bars: exactly what the customer asked for, scored as clutter.
+"Marks the room down" means that: **the requested items are subtracted from the
+score.** An AI trained to raise this score learns that grab bars cost points.
+
+**The fix, in the same terms:** add the brief's requests to that room's
+checklist, so each one earns +1 instead of costing ½. The checklist now has 10
+lines. The accessible bathroom rises to (5 ÷ 10) = **50.0**, and the standard one
+falls to (5 ÷ 10) = **50.0**, because it now misses three requested items. They
+tie only because the checklist still does not count a roll-in shower as a
+shower. In the other three test rooms (the laundry kitchen, the work nook and the
+nursery), the layout that follows the brief now wins outright ([section 11](report/11-brief-aware-coverage.md)).
+
+The rest of this page, and [the report](report/README.md), is the evidence.
+
+## The evidence, briefly
+
+envelope-shift reimplements the three published metrics (coverage, navigability,
+and overlap & clearance) and scores AI-generated layouts on a ladder of 48 rooms
+in six tiers, from ordinary rectangles up to ordinary geometry with an
+unconventional program: a kitchen that is also the laundry, a bath for aging in
+place, a nursery, a bedroom with a work nook.
+
+- On ordinary rooms every model scores near the ceiling on coverage. On the
+  unconventional-program tier, coverage falls. **None of the fall is a missing
+  item; all of it is the penalty on what the brief asked for:** the washer and
+  dryer, the crib, the grab bars ([section 5](report/05-coverage-as-reward.md)).
+- A hand-authored, fully valid aging-in-place bath scores **7.1** on coverage
+  against **71.4** for the conventional one. Coverage docks it for the tub it
+  removed and again for the roll-in shower and grab bars it added.
+- Picking the best of 16 samples by coverage keeps *less varied* layouts than
+  picking at random, for four of the five arms tested across both runs.
+- **Replicated on current models.** The study began on a local open-weights
+  model and cheaper cloud arms, then was re-run end to end on **Claude Opus 5.5
+  and Sonnet 5.5** with nothing else changed. The finding holds to within two
+  points: 0.0 coverage lost to missing items, the same 10.6 lost to the declared
+  program ([section 10](report/10-replication.md)).
+- **A proposed fix, measured.** Score the room against its *brief's* inventory
+  instead of its type's. Simply forgiving the requested items is not enough: the
+  layout that ignores the brief still never loses. Requiring them flips the
+  incentive. The brief-following layout wins three of four hand-authored pairs and
+  ties the fourth, and on the models' own output the correlation with following
+  the brief goes from −0.21 to +0.32 ([section 11](report/11-brief-aware-coverage.md)).
+- **Verifiable from a fresh clone.** The replication's raw model output is
+  committed, and every one of its tables regenerates byte for byte in CI.
 
 [![the aging-in-place pair](report/figures/e2_t5_pbath_aging_in_place.png)](report/figures/e2_t5_pbath_aging_in_place.png)
 
-The sharpest case is a hand-authored, fully valid primary bath designed for
-aging in place: coverage scores the conventional layout **71.4** and the
-unconventional one **7.1**. It docks the unconventional layout once for the
-bathtub, shower stall and linen cabinet it gives up, and again for the roll-in
-shower, shower bench and grab bars it puts there instead, which coverage scores
-as *extraneous* ([section 5](report/05-coverage-as-reward.md),
-[`e2_pairs.csv`](report/data/e2_pairs.csv)).
+**Affiliation.** This is an independent project with **no affiliation** with
+Higharc. It has no access to GBM, their corpus or their inventory tables, and it
+makes no claim about what their model would score on anything here. The post is
+unusually detailed and generous, and it is the reason this project is possible.
 
 ## Status of results
 
-Read this before quoting anything. The report says plainly what held, what was
-shown wrong and what is out of date; the full list is in
+The report labels each result as held or withdrawn; the full list is in
 [report/README.md, "Status of results"](report/README.md#status-of-results).
 
 - **Held:** the coverage-as-reward finding ([section 5](report/05-coverage-as-reward.md)).
   Every committed table regenerates from the raw data, and an adversarial review
   reproduced the numbers.
-- **Invalidated:** three headline results of the first draft: "coverage
+- **Proposed fix:** brief-aware coverage ([section 11](report/11-brief-aware-coverage.md)),
+  this project's suggestion rather than part of the published method.
+- **Replicated and current:** the same finding on Opus 5.5 and Sonnet 5.5
+  ([section 10](report/10-replication.md)), scored under the current metrics,
+  with raw data in the repo.
+- **Withdrawn:** three headline results of the first draft: "coverage
   saturates", "parse failures rise with difficulty" and "navigability
   reimplements the published formula". Each was traced to a defect in the
   experiment, not in the arithmetic, and withdrawn.
-- **Stale:** navigability figures from the model sweeps predate the last
-  navigability fix and have not been re-run.
+- **Confirmed after the last fix:** the original sweeps were rescored under the
+  current metrics and every published table reproduced unchanged.
 
 ## Quickstart
 
@@ -58,6 +143,7 @@ uv run pytest -q                                   # the test suite
 uv run envelope-shift params                       # the chosen-parameters table
 uv run envelope-shift params --params strict --out-dir /tmp/params
 uv run envelope-shift score-layout                 # score one committed layout, print its metrics
+uv run python -m envelope_shift.analysis.replication   # rebuild every section 10 table from committed raw data
 ```
 
 About nine tests skip on a fresh clone, and `uv run pytest -q -rs` prints why:
@@ -65,7 +151,8 @@ they re-derive tables from `results/`, the raw model output, which is not
 distributed. [docs/offline.md](docs/offline.md) has the details.
 
 The commands that call a model or read `results/` are below for completeness.
-This release does not re-run them.
+The replication (section 10) was produced by the first of them with
+`--models opus55 sonnet55`.
 
 ```bash
 uv run envelope-shift sweep --models local opus sonnet --out results
@@ -83,7 +170,7 @@ a change without re-querying a model.
 
 ## Read the report
 
-**[`report/`](report/README.md)** is the write-up, in nine short sections:
+**[`report/`](report/README.md)** is the write-up, in eleven short sections:
 
 | | |
 |---|---|
@@ -96,6 +183,8 @@ a change without re-querying a model.
 | [7. A fourth axis](report/07-fourth-axis.md) | isovist and daylight measures, explicitly unvalidated |
 | [8. What this does not show](report/08-what-this-does-not-show.md) | the limitations, at full strength |
 | [9. A note from an adjacent domain](report/09-adjacent-domain.md) | the same failure mode, seen elsewhere |
+| [10. Replication on the 5.5 models](report/10-replication.md) | Opus 5.5 and Sonnet 5.5, raw data committed, the finding holds |
+| [11. A proposed fix](report/11-brief-aware-coverage.md) | brief-aware coverage: what it repairs, measured, and what it does not |
 
 Every number in the report is a cell in a committed table under
 [`report/data/`](report/data), named in the sentence that uses it and
@@ -149,8 +238,8 @@ and every unpublished parameter are this harness's own, so absolute scores are
 not comparable with the published ones; the arms are general-purpose models run
 under different transports and sampling, not Higharc's model; overlap &
 clearance depends on how an arm reads the placement convention; the fourth axis
-is unvalidated; and nothing was re-run after the last fixes, so sweep
-navigability is stale. The author has no professional expertise in architecture.
+is unvalidated; and the original sweeps' raw output is not distributed, so only
+the replication can be rescored by a reader. The author has no professional expertise in architecture.
 Treat this as a well-evidenced warning about one metric used as a reward, not a
 verdict on anyone's system.
 
@@ -168,6 +257,7 @@ src/envelope_shift/
   experiments/      the hand-authored paired layouts (E2)
   generate.py       prompt a model (OpenAI-compatible, Anthropic, or the Claude Code CLI), parse a layout
   run.py            sweep, score, score-layout, params, summary
+replication/        the 5.5 replication: committed raw model output and its pool manifest
 report/             the write-up, its derived tables, and its figures
 docs/               offline use and the Guild case study
 tests/

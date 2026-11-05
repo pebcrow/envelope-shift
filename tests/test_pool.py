@@ -33,11 +33,14 @@ RESULTS = Path(os.environ.get("ENVELOPE_SHIFT_RESULTS", REPO / "results"))
 ORIGINAL_MANIFEST = REPO / "tests" / "fixtures" / "corpora_original.toml"
 ORIGINAL = pool.load_manifest(ORIGINAL_MANIFEST)["all"]
 
-# sha256 of the results/all those inputs made, read off the file on 2026-09-21 before it was
-# rebuilt: 236 layouts, 240 scores (236 + the 4 transport failures), 4 transport failures.
+# sha256 of the raw files of the results/all those inputs made, read off the file on
+# 2026-09-21 before it was rebuilt: 236 layouts, 4 transport failures. Only the RAW files are
+# pinned. scores.jsonl is derived from them by the current scorer, so its bytes change
+# whenever a metric is fixed (the doorway fix changed them); pinning it would turn every
+# metric fix into a pooling failure. The scores are checked instead against a fresh scoring
+# of the pooled layouts.
 ORIGINAL_SHA256 = {
     "layouts.jsonl": "c3353b8d292dd44f64192f2ccadec9cd3e31e9f7c325aa001acfc611ec85daec",
-    "scores.jsonl": "ab31b6cf9ccdcca43589940426f55ce662bc0050263bd99b933c90cd4a369df4",
     "transport_failures.jsonl": "96fcb000e526a370acb13a678d83f54173383d5537359841be0bcc248e0e5927",
 }
 
@@ -68,7 +71,10 @@ def _pool_through_the_command(tmp_path: Path, manifest: Path, score: bool) -> di
 @needs_results
 def test_pooling_the_original_inputs_reproduces_the_hand_built_results_all_byte_for_byte(tmp_path):
     files = _pool_through_the_command(tmp_path, ORIGINAL_MANIFEST, score=True)
+    scores = files.pop("scores.jsonl")
     assert {name: _sha(text) for name, text in files.items()} == ORIGINAL_SHA256
+    assert scores == run.serialize_scores(run.score_rows(tmp_path / "all" / "layouts.jsonl"))
+    assert _n(scores) == 240  # 236 layouts + the 4 transport failures
 
 
 @needs_results

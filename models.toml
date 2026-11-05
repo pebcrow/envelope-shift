@@ -99,3 +99,17 @@ temperature = 0.2
 max_tokens = 8000
 [glm.extra_body]
 reasoning_effort = "low"
+
+# THE 5.5 REPLICATION ARMS (2026-11). Same transport, effort and sampling as the
+# original Claude arms above; only the model id changes. See report/10-replication.md.
+[opus55]
+backend = "claude_cli"
+model = "claude-opus-5-5"
+effort = "medium"
+sampling = "default"
+
+[sonnet55]
+backend = "claude_cli"
+model = "claude-sonnet-5-5"
+effort = "medium"
+sampling = "default"

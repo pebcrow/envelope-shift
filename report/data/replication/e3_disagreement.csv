@@ -1,0 +1,10 @@
+envelope_id,room_type,tier,model,sample,coverage,navigability,overlap_clearance,reason
+t0_sbed_12x12,secondary_bedroom,T0,opus55,0,100.0000,99.1508,16.7709,cov>=90 & oc>=10
+t2_office_T,office,T2,opus55,0,100.0000,94.1552,17.3086,cov>=90 & oc>=10
+t2_garage_notch,garage,T2,opus55,0,100.0000,32.8614,21.6567,cov>=90 & nav<50 & oc>=10
+t3_garage_taper,garage,T3,opus55,0,100.0000,33.3333,23.9417,cov>=90 & nav<50 & oc>=10
+t1_kitchen_12x14_tall,kitchen,T1,sonnet55,0,100.0000,98.1215,18.7230,cov>=90 & oc>=10
+t2_garage_notch,garage,T2,sonnet55,0,100.0000,93.3354,13.4659,cov>=90 & oc>=10
+t3_garage_taper,garage,T3,sonnet55,0,100.0000,99.1569,15.5342,cov>=90 & oc>=10
+t4_garage_shed_roof,garage,T4,sonnet55,0,100.0000,97.9248,17.2912,cov>=90 & oc>=10
+t1_office_7x8,office,T1,sonnet55-noinv,0,100.0000,0.0000,0.0000,cov>=90 & nav<50

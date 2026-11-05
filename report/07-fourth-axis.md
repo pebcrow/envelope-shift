@@ -8,10 +8,10 @@ alongside the three published metrics, never a gate and never a reward on its
 own. Validating it would need a human-preference study this project does not
 attempt.
 
-> **Status.** The correlations against coverage and overlap & clearance are
-> HELD; the navigability column is STALE, because it uses sweep navigability
-> from before the doorway fix. The isovist values of the hand-authored pairs in
-> 7.3 are current ([status of results](README.md#status-of-results)).
+> **Status.** The correlations against all three published metrics are HELD; the
+> navigability column was confirmed after the doorway fix. The isovist values of
+> the hand-authored pairs in 7.3 are current
+> ([status of results](README.md#status-of-results)).
 
 ## 7.1 What it measures
 

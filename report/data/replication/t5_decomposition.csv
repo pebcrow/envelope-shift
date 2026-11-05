@@ -1,0 +1,3 @@
+model,n_rows,n_clamped,coverage_mean,missing,extraneous_declared,extraneous_synonym,extraneous_other
+opus55,7,0,78.6735,0.0000,10.6122,7.1429,3.5714
+sonnet55,8,0,73.0060,0.0000,15.5357,2.0833,9.3750

@@ -11,10 +11,11 @@ The repo's [top-level README](../README.md) is the short version.
 ## Status of results
 
 An adversarial review of the first full draft found that three of its four
-headline results were wrong. The report was rewritten around what survived, and
-nothing has been re-run or rescored since the last fixes, by choice. Each result
-carries one of three labels, and each affected section repeats its label at the
-top.
+headline results were wrong. The report was rewritten around what survived. In
+November 2026 the original sweeps were rescored under the current metrics, and the
+harness was re-run on two current models with its raw output committed
+(section 10). Each result carries one of three labels, and each affected section
+repeats its label at the top.
 
 **HELD: the arithmetic reproduces from the data.** Every committed table under
 [`data/`](data) regenerates by the command its provenance entry names: the
@@ -46,13 +47,24 @@ byte for byte under the fixed metrics.
   the same two points, a per-pair cap keeps the score in its declared range, and
   the sweeps were rescored after both fixes.
 
-**STALE: navigability from the model sweeps.** A later fix changed how a fixture
-standing on a doorway is scored: it used to count as a reached target with a
-zero-length path, and now that door-to-target pair counts as unreached
-(`nav_door_on_target_reached`, [section 3](03-method.md)). The sweeps have not
-been rescored since, so every navigability figure derived from them, in
-sections 4, 5.1, 6 and 7, predates the fix and may move when they are. The
-hand-authored navigability figures in section 5.2 are current.
+**CURRENT: the 5.5 replication.** [Section 10](10-replication.md) re-runs the
+whole harness on Claude Opus 5.5 and Sonnet 5.5. Its raw rows are committed under
+[`../replication/raw/`](../replication/raw), so unlike the original sweeps every
+table it cites under [`data/replication/`](data/replication) regenerates on a
+fresh clone (`uv run python -m envelope_shift.analysis.replication`), and CI
+checks it byte for byte. Its navigability includes the doorway fix. The section 5
+finding holds on both arms.
+
+**Formerly STALE, now confirmed: navigability from the original sweeps.** A late
+fix changed how a fixture standing on a doorway is scored: it used to count as a
+reached target with a zero-length path, and now that door-to-target pair counts
+as unreached (`nav_door_on_target_reached`, [section 3](03-method.md)). Until
+November 2026 the sweeps had not been rescored after it, so sections 4, 5.1, 6
+and 7 carried a STALE label. They have now been rescored on the host that holds
+the raw output, the regenerate check found no stale score anywhere under
+`results/`, and every committed table reproduced byte for byte: the fix moved no
+published number. The label is withdrawn. That check needs the undistributed
+`results/` tree, so a reader cannot repeat it; section 10's can be.
 
 ## Contents
 
@@ -74,6 +86,11 @@ hand-authored navigability figures in section 5.2 are current.
    at full strength.
 9. [A note from an adjacent domain](09-adjacent-domain.md) — the same failure
    mode in browser-game generation, without numbers.
+10. [Replication on the 5.5 models](10-replication.md) — the same harness on
+   Claude Opus 5.5 and Sonnet 5.5, raw data committed; the finding holds.
+11. [A proposed fix: brief-aware coverage](11-brief-aware-coverage.md) — score a
+   room against its brief's inventory; forgiving the program is not enough,
+   requiring it flips the incentive.
 
 Plots live in [`figures/`](figures); the tables every section cites live in
 [`data/`](data).
@@ -141,6 +158,8 @@ entry is compared byte for byte.
 | `calibration_t0_delta.csv` | STRICT minus DEFAULT, per room |
 | `calibration_t0_summary.md` | per-arm T0 means under both sets against the published band; `off_scale` counts rows whose navigability left the metric's declared -35..100 |
 | `params_default.md`, `params_strict.md` | every field of `params.Params`, STRICT-changed fields marked |
+| `e5_pairs.csv` | section 11: the E2 pairs under published, tolerate and require coverage, with brief fulfilment |
+| `replication/*` | section 10: the same tables, same names, built from the committed `replication/raw/` rows by `envelope_shift.analysis.replication` |
 
 ## Figures
 

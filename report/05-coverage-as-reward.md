@@ -1,9 +1,8 @@
 # 5. Coverage as a reward
 
 > **Status: HELD.** This is the finding that survived review. Its coverage,
-> selection and hand-authored figures reproduce from the committed tables. One
-> figure is STALE: `local`'s navigability on two T5 rooms in 5.1, which comes
-> from the sweep and predates the doorway fix
+> selection and hand-authored figures reproduce from the committed tables, and the
+> sweep navigability in 5.1 was confirmed after the doorway fix
 > ([status of results](README.md#status-of-results)).
 
 Coverage asks whether the room contains what a room of that type is supposed to contain, and

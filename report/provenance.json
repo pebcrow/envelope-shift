@@ -393,5 +393,252 @@
     ],
     "byte_identical": true,
     "note": "Per inventory-supplied arm, the t5_decomposition.csv means restricted to the T5 rooms every arm has an unclamped parsed row for, so no arm's mean is carried by a room another lacks; each arm's excluded rooms are named with the reason (clamped or parse_failure)."
+  },
+  "report/data/replication/calibration_t0_default.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.replication",
+      "--build",
+      "{out}"
+    ],
+    "output": "calibration_t0_default.csv",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "Section 10, the 5.5 replication. No results/ input: built from the committed raw rows under replication/raw/, pooled by replication/corpora.toml and scored under the current metrics."
+  },
+  "report/data/replication/calibration_t0_delta.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.replication",
+      "--build",
+      "{out}"
+    ],
+    "output": "calibration_t0_delta.csv",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "Section 10, the 5.5 replication. No results/ input: built from the committed raw rows under replication/raw/, pooled by replication/corpora.toml and scored under the current metrics."
+  },
+  "report/data/replication/calibration_t0_strict.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.replication",
+      "--build",
+      "{out}"
+    ],
+    "output": "calibration_t0_strict.csv",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "Section 10, the 5.5 replication. No results/ input: built from the committed raw rows under replication/raw/, pooled by replication/corpora.toml and scored under the current metrics."
+  },
+  "report/data/replication/calibration_t0_summary.md": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.replication",
+      "--build",
+      "{out}"
+    ],
+    "output": "calibration_t0_summary.md",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "Section 10, the 5.5 replication. No results/ input: built from the committed raw rows under replication/raw/, pooled by replication/corpora.toml and scored under the current metrics."
+  },
+  "report/data/replication/e1_degradation.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.replication",
+      "--build",
+      "{out}"
+    ],
+    "output": "e1_degradation.csv",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "Section 10, the 5.5 replication. No results/ input: built from the committed raw rows under replication/raw/, pooled by replication/corpora.toml and scored under the current metrics."
+  },
+  "report/data/replication/e2b_bestofn.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.replication",
+      "--build",
+      "{out}"
+    ],
+    "output": "e2b_bestofn.csv",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "Section 10, the 5.5 replication. No results/ input: built from the committed raw rows under replication/raw/, pooled by replication/corpora.toml and scored under the current metrics."
+  },
+  "report/data/replication/e3_disagreement.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.replication",
+      "--build",
+      "{out}"
+    ],
+    "output": "e3_disagreement.csv",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "Section 10, the 5.5 replication. No results/ input: built from the committed raw rows under replication/raw/, pooled by replication/corpora.toml and scored under the current metrics."
+  },
+  "report/data/replication/model_arms.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.replication",
+      "--build",
+      "{out}"
+    ],
+    "output": "model_arms.csv",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "Section 10, the 5.5 replication. No results/ input: built from the committed raw rows under replication/raw/, pooled by replication/corpora.toml and scored under the current metrics."
+  },
+  "report/data/replication/t5_by_envelope.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.replication",
+      "--build",
+      "{out}"
+    ],
+    "output": "t5_by_envelope.csv",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "Section 10, the 5.5 replication. No results/ input: built from the committed raw rows under replication/raw/, pooled by replication/corpora.toml and scored under the current metrics."
+  },
+  "report/data/replication/t5_common_rooms.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.replication",
+      "--build",
+      "{out}"
+    ],
+    "output": "t5_common_rooms.csv",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "Section 10, the 5.5 replication. No results/ input: built from the committed raw rows under replication/raw/, pooled by replication/corpora.toml and scored under the current metrics."
+  },
+  "report/data/replication/t5_decomposition.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.replication",
+      "--build",
+      "{out}"
+    ],
+    "output": "t5_decomposition.csv",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "Section 10, the 5.5 replication. No results/ input: built from the committed raw rows under replication/raw/, pooled by replication/corpora.toml and scored under the current metrics."
+  },
+  "report/figures/replication/e1_degradation.png": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.replication",
+      "--build",
+      "{out}"
+    ],
+    "output": "e1_degradation.png",
+    "inputs": [],
+    "byte_identical": false,
+    "note": "Section 10, the 5.5 replication. No results/ input: built from the committed raw rows under replication/raw/, pooled by replication/corpora.toml and scored under the current metrics."
+  },
+  "report/figures/replication/e2b_bestofn.png": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.replication",
+      "--build",
+      "{out}"
+    ],
+    "output": "e2b_bestofn.png",
+    "inputs": [],
+    "byte_identical": false,
+    "note": "Section 10, the 5.5 replication. No results/ input: built from the committed raw rows under replication/raw/, pooled by replication/corpora.toml and scored under the current metrics."
+  },
+  "report/figures/replication/e3_disagreement.png": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.replication",
+      "--build",
+      "{out}"
+    ],
+    "output": "e3_disagreement.png",
+    "inputs": [],
+    "byte_identical": false,
+    "note": "Section 10, the 5.5 replication. No results/ input: built from the committed raw rows under replication/raw/, pooled by replication/corpora.toml and scored under the current metrics."
+  },
+  "report/data/e5_pairs.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.e5_brief_coverage",
+      "pairs",
+      "{out}"
+    ],
+    "output": "e5_pairs.csv",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "Section 11: the four hand-authored E2 pairs under published, tolerate and require coverage, with brief fulfilment. No results/ input: the layouts are authored in code."
+  },
+  "report/data/replication/e5_bestofn.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.replication",
+      "--build",
+      "{out}"
+    ],
+    "output": "e5_bestofn.csv",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "Section 11, brief-aware coverage on the 5.5 replication rows. No results/ input: built from the committed raw rows under replication/raw/."
+  },
+  "report/data/replication/e5_identity.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.replication",
+      "--build",
+      "{out}"
+    ],
+    "output": "e5_identity.csv",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "Section 11, brief-aware coverage on the 5.5 replication rows. No results/ input: built from the committed raw rows under replication/raw/."
+  },
+  "report/data/replication/e5_t5.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.replication",
+      "--build",
+      "{out}"
+    ],
+    "output": "e5_t5.csv",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "Section 11, brief-aware coverage on the 5.5 replication rows. No results/ input: built from the committed raw rows under replication/raw/."
+  },
+  "report/data/replication/e5_t5_correlation.csv": {
+    "command": [
+      "python",
+      "-m",
+      "envelope_shift.analysis.replication",
+      "--build",
+      "{out}"
+    ],
+    "output": "e5_t5_correlation.csv",
+    "inputs": [],
+    "byte_identical": true,
+    "note": "Section 11, brief-aware coverage on the 5.5 replication rows. No results/ input: built from the committed raw rows under replication/raw/."
   }
 }

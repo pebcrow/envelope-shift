@@ -1,5 +1,39 @@
 # Changelog
 
+## v1.1.0 — replication on the 5.5 models
+
+### Added
+- Report section 10: the whole harness re-run on Claude Opus 5.5 and Sonnet 5.5
+  (`opus55`, `sonnet55` in `models.toml`), same prompts, transport, effort and
+  sampling as the original Claude arms. The T5 finding holds: 0.0 coverage lost
+  to missing lines, 10.6 to the declared program, on both.
+- `replication/raw/`: the replication's raw model output, committed and
+  sanitized (session and message ids, host paths and account state removed;
+  the condition-bearing CLI events kept). `replication/corpora.toml` pools it.
+- `envelope_shift.analysis.replication`: rebuilds every `report/data/replication/`
+  table from the committed rows under the current metrics, and checks them byte
+  for byte. CI runs the check as its own step (`pytest -m replication`).
+- `tests/test_replication.py`: the regenerate check, and a guard that no
+  committed raw row carries a UUID-shaped id, a session id or a host path.
+
+- Report section 11 and `metrics.coverage.coverage_brief`: brief-aware coverage,
+  a proposed fix in two modes (tolerate, require), a no-op wherever a brief
+  declares no program. `analysis/e5_brief_coverage.py` scores the E2 pairs
+  (`report/data/e5_pairs.csv`) and the replication rows
+  (`report/data/replication/e5_*.csv`); `tests/test_brief_coverage.py` covers it.
+
+### Changed
+- README leads with what the project is and what it found, in plain terms, with
+  a worked example; status labels gain CURRENT for the replication.
+- The STALE label on the original sweeps' navigability (sections 4 to 7) is
+  withdrawn: rescored under the current metrics on the host holding the raw
+  output, every committed table reproduced byte for byte.
+
+### Fixed
+- `tests/test_pool.py` pinned the derived scores of the original pooled corpus,
+  so any metric fix failed it; it now pins the raw files and checks the scores
+  against a fresh scoring.
+
 ## v1.0.0 — release-ready wrap-up
 
 No model was re-run and no result table was regenerated for this release; the

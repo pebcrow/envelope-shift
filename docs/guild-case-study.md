@@ -116,7 +116,7 @@ The rebuild fixed each defect at its source, added validity claims beside the
 bookkeeping ones, cut the sections that rested on invalid results, and rewrote
 the report around the one finding that survived. The report's
 [status of results](../report/README.md#status-of-results) records what held,
-what was withdrawn and which figures are stale.
+what was withdrawn, and how a stale label was later checked and cleared.
 
 ## Lessons folded forward
 
@@ -147,8 +147,11 @@ once for real, and the epic cannot close until a round comes back clean.
 
 **Data invalidation.** Fixed code did not flag the corpora generated before the
 fix. This lives as per-row prompt hashes and a stimulus-parity validity claim.
-Automatic staleness marking is still a wish, and this release shows why it
-matters: its sweep navigability figures are labelled stale by hand.
+Automatic staleness marking is still a wish, and v1.0.0 showed why it
+matters: its sweep navigability figures were labelled stale by hand, and clearing
+the label took a manual rescore on the one host holding the raw data (it moved no
+number). v1.1.0 commits the replication's raw rows so the next such check is a CI
+job.
 
 **Orchestrator theses are not binding without an oracle.** A binding note from
 the orchestrator held two errors, and one of them reached a headline. A thesis

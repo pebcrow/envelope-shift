@@ -1,0 +1,5 @@
+model,n_rows,fulfilment,published,tolerate,require
+opus55,7,0.4762,78.6735,89.2857,76.6071
+opus55-noinv,8,0.5000,28.1131,38.2917,40.3819
+sonnet55,8,0.5000,73.0060,88.5417,77.1354
+sonnet55-noinv,8,0.3958,20.1548,27.6250,31.1979

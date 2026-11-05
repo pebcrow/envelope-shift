@@ -1,0 +1,4 @@
+variant,n_rows,spearman_vs_fulfilment
+published,31,-0.2051
+tolerate,31,0.0132
+require,31,0.3221

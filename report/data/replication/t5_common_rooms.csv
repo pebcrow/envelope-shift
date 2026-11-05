@@ -1,0 +1,3 @@
+model,n_rooms,coverage_mean,missing,extraneous_declared,extraneous_synonym,extraneous_other,excluded
+opus55,7,78.6735,0.0000,10.6122,7.1429,3.5714,t5_garage_workshop:parse_failure
+sonnet55,7,83.4354,0.0000,10.6122,2.3810,3.5714,

@@ -106,13 +106,12 @@ arms' split on this axis at T0 (section 4) has not been separated from that
 effect. The definitions of the four terms, their equal weights and the touching
 tolerance are this harness's own choices as well (section 3).
 
-**Nothing was re-run after the last fixes.** The sweeps were last scored before
-a fixture standing on a doorway was made to count as blocking that pair, and by
-choice nothing was re-run or rescored for this release. Coverage and overlap &
-clearance do not depend on that fix; every navigability figure taken from the
-sweeps does, and is stale until the sweeps are rescored. The
-[status of results](README.md#status-of-results) lists what held, what was
-withdrawn and what is stale.
+**The original sweeps' raw output is not distributed.** It was rescored under the
+current metrics on the host that holds it, after the last fix, and every
+committed table reproduced byte for byte; but a reader cannot repeat that check.
+The section 10 replication's raw output is committed and can be. The
+[status of results](README.md#status-of-results) lists what held and what was
+withdrawn.
 
 **The note in section 9 rests on work a reader cannot check.** It describes
 measurements from a private repository, so it carries no numbers, and the
