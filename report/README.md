@@ -11,11 +11,11 @@ The repo's [top-level README](../README.md) is the short version.
 ## Status of results
 
 An adversarial review of the first full draft found that three of its four
-headline results were wrong. The report was rewritten around what survived. The
-original sweeps have not been rescored since the last fixes; in November 2026 the
-harness was re-run on two current models, scored under the current metrics, with
-its raw output committed (section 10). Each result carries one of four labels,
-and each affected section repeats its label at the top.
+headline results were wrong. The report was rewritten around what survived. In
+November 2026 the original sweeps were rescored under the current metrics, and the
+harness was re-run on two current models with its raw output committed
+(section 10). Each result carries one of three labels, and each affected section
+repeats its label at the top.
 
 **HELD: the arithmetic reproduces from the data.** Every committed table under
 [`data/`](data) regenerates by the command its provenance entry names: the
@@ -55,13 +55,16 @@ fresh clone (`uv run python -m envelope_shift.analysis.replication`), and CI
 checks it byte for byte. Its navigability includes the doorway fix. The section 5
 finding holds on both arms.
 
-**STALE: navigability from the original model sweeps.** A later fix changed how a fixture
-standing on a doorway is scored: it used to count as a reached target with a
-zero-length path, and now that door-to-target pair counts as unreached
-(`nav_door_on_target_reached`, [section 3](03-method.md)). The sweeps have not
-been rescored since, so every navigability figure derived from them, in
-sections 4, 5.1, 6 and 7, predates the fix and may move when they are. The
-hand-authored navigability figures in section 5.2 are current.
+**Formerly STALE, now confirmed: navigability from the original sweeps.** A late
+fix changed how a fixture standing on a doorway is scored: it used to count as a
+reached target with a zero-length path, and now that door-to-target pair counts
+as unreached (`nav_door_on_target_reached`, [section 3](03-method.md)). Until
+November 2026 the sweeps had not been rescored after it, so sections 4, 5.1, 6
+and 7 carried a STALE label. They have now been rescored on the host that holds
+the raw output, the regenerate check found no stale score anywhere under
+`results/`, and every committed table reproduced byte for byte: the fix moved no
+published number. The label is withdrawn. That check needs the undistributed
+`results/` tree, so a reader cannot repeat it; section 10's can be.
 
 ## Contents
 

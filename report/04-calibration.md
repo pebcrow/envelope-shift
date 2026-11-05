@@ -3,8 +3,9 @@
 > **Status.** Coverage and overlap & clearance figures here are HELD: the
 > arithmetic reproduces. HELD is not a claim that overlap & clearance is a valid
 > measure here; see section 8 on its dependence on the placement convention.
-> Navigability figures are STALE: they predate the doorway fix and have not
-> been rescored ([status of results](README.md#status-of-results)).
+> Navigability figures are HELD too: the sweeps were rescored after the doorway
+> fix and every table reproduced unchanged
+> ([status of results](README.md#status-of-results)).
 
 T0 exists to be reproduced. It is eight rectangular, typical rooms — the most
 in-distribution material this repo contains — so if the harness were calibrated

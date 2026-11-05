@@ -114,7 +114,7 @@ unusually detailed and generous, and it is the reason this project is possible.
 
 ## Status of results
 
-The report labels each result as held, withdrawn or stale; the full list is in
+The report labels each result as held or withdrawn; the full list is in
 [report/README.md, "Status of results"](report/README.md#status-of-results).
 
 - **Held:** the coverage-as-reward finding ([section 5](report/05-coverage-as-reward.md)).
@@ -129,8 +129,8 @@ The report labels each result as held, withdrawn or stale; the full list is in
   saturates", "parse failures rise with difficulty" and "navigability
   reimplements the published formula". Each was traced to a defect in the
   experiment, not in the arithmetic, and withdrawn.
-- **Stale:** navigability figures from the *original* sweeps predate the last
-  navigability fix. The replication's navigability is current.
+- **Confirmed after the last fix:** the original sweeps were rescored under the
+  current metrics and every published table reproduced unchanged.
 
 ## Quickstart
 
@@ -238,8 +238,8 @@ and every unpublished parameter are this harness's own, so absolute scores are
 not comparable with the published ones; the arms are general-purpose models run
 under different transports and sampling, not Higharc's model; overlap &
 clearance depends on how an arm reads the placement convention; the fourth axis
-is unvalidated; and the original sweeps were not rescored after the last fix, so
-their navigability is stale (the replication's is current). The author has no professional expertise in architecture.
+is unvalidated; and the original sweeps' raw output is not distributed, so only
+the replication can be rescored by a reader. The author has no professional expertise in architecture.
 Treat this as a well-evidenced warning about one metric used as a reward, not a
 verdict on anyone's system.
 

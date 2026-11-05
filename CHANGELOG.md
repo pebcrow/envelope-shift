@@ -23,8 +23,16 @@
   (`report/data/replication/e5_*.csv`); `tests/test_brief_coverage.py` covers it.
 
 ### Changed
-- README leads with the finding and the replication; status labels gain
-  CURRENT for the replication, and STALE now names only the original sweeps.
+- README leads with what the project is and what it found, in plain terms, with
+  a worked example; status labels gain CURRENT for the replication.
+- The STALE label on the original sweeps' navigability (sections 4 to 7) is
+  withdrawn: rescored under the current metrics on the host holding the raw
+  output, every committed table reproduced byte for byte.
+
+### Fixed
+- `tests/test_pool.py` pinned the derived scores of the original pooled corpus,
+  so any metric fix failed it; it now pins the raw files and checks the scores
+  against a fresh scoring.
 
 ## v1.0.0 — release-ready wrap-up
 
